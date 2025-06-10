@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Mon portfolio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">    
+  </head>
+  <body>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Chargement...</span>
+    </div>
+  </div>
+    
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+
+    <!-- NAVBAR -->
+     <header class="site-navbar mt-3" id="top">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="site-logo col-6"><a href="index.html">Zuuret</a></div>
+
+
+          
+
+          <nav class="mx-auto site-navigation">
+            <ul class="site-menu js-clone-nav d-none d-lg-block">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="about.html">Qui suis-je ?</a></li>
+              <li><a href="portfolio.html">Compétences</a></li>
+              <li class="has-children">
+                <a href="services.html" class="nav-link active">Pages</a>
+                <ul class="dropdown">
+                  <li><a href="services.html">Compétence deux</a></li>
+                  <li><a href="service-single.html">Compétence quatre</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.html">Formation</a></li>
+              <li><a href="contact.html" >Projet</a></li>
+            </ul>
+          </nav>
+          
+          <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+            <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="home-section section-hero overlay slanted" id="home-section">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-8 text-center">
+            <h1>Compétence 4</h1>
+            <div class="mx-auto w-75">
+              <p>Gérer des données de l’information.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      <!-- VIDEO -->
+      <div class="video-container">
+        <video autoplay loop="true">
+          <source type="video/mp4" src="videos/video.mp4">
+        </video>
+      </div>
+
+      <a href="#next-section" class="smoothscroll scroll-button">
+        <span class=" icon-keyboard_arrow_down"></span>
+      </a>
+
+    </section>
+
+    <section class="site-section block__18514" id="next-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <span class="text-primary d-block mb-5"><span class="icon-line-tools display-1"></span></span>
+            <h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Optimiser_des_applications__Compression_de_modles_par_Knowledge_Distillation_0"></a>Optimiser des applications – Compression de modèles par Knowledge Distillation</h1>
+<h2 class="code-line" data-line-start=2 data-line-end=3 ><a id="Lobjectif_principal_de_mon_stage_2"></a>L’objectif principal de mon stage</h2>
+<p class="has-line-data" data-line-start="4" data-line-end="5">L’objectif principal de mon stage était d’étudier des techniques de compression de modèles, en particulier à travers la <strong>knowledge distillation</strong>.</p>
+<hr>
+<h2 class="code-line" data-line-start=8 data-line-end=9 ><a id="Ciblage_des_modles__de_la_base__loptimisation_8"></a>Ciblage des modèles : de la base à l’optimisation</h2>
+<p class="has-line-data" data-line-start="10" data-line-end="11">La première étape consistait à identifier une tâche sur laquelle un <strong>Large Language Model (LLM)</strong> comme <em>CodeBERT</em> atteignait au moins <strong>80 % de précision</strong>, sans modification du modèle, uniquement grâce à un traitement rigoureux des données.</p>
+<p class="has-line-data" data-line-start="12" data-line-end="13">Une fois cette base établie, il fallait identifier un <strong>Small Language Model (SLM)</strong>, comme <em>TinyBERT</em>, qui devait initialement atteindre environ <strong>60 % de précision</strong> sur la même tâche, afin de créer une <strong>marge d’amélioration justifiant la distillation</strong>.</p>
+<p class="has-line-data" data-line-start="14" data-line-end="15">Un des premiers défis rencontrés concernait les jeux de données. Certains présentaient de très bonnes performances sur les deux modèles, rendant la distillation peu pertinente (le SLM ne pouvant pas « rattraper » le LLM). J’ai donc dû chercher, tester et analyser de nouveaux jeux de données, d’abord à partir de critères théoriques (<strong>taille</strong>, <strong>qualité des labels</strong>, <strong>équilibre des classes</strong>), puis par des expérimentations concrètes (<strong>fine-tuning</strong>, <strong>évaluation des performances</strong>, <strong>visualisation des distributions</strong>).</p>
+<hr>
+<h2 class="code-line" data-line-start=18 data-line-end=19 ><a id="Finetuning_des_modles_18"></a>Fine-tuning des modèles</h2>
+<p class="has-line-data" data-line-start="20" data-line-end="21">Une fois les modèles choisis (<em>CodeBERT</em> atteignant <strong>90 %</strong> et <em>TinyBERT</em> environ <strong>72 %</strong> après fine-tuning), j’ai spécialisé ces deux modèles sur une tâche bien précise : <strong>la détection de vulnérabilités dans les Smart Contracts</strong>.</p>
+<p class="has-line-data" data-line-start="22" data-line-end="23">J’ai mis en œuvre différentes techniques de <strong>fine-tuning</strong> et j’ai réalisé un suivi hebdomadaire sous forme de <strong>présentations synthétiques</strong> pour mon tuteur de stage. Ces échanges m’ont permis de mieux définir les prochaines étapes et d’approfondir certaines pistes techniques.</p>
+<hr>
+<h2 class="code-line" data-line-start=26 data-line-end=27 ><a id="Compression_via_knowledge_distillation_26"></a>Compression via knowledge distillation</h2>
+<p class="has-line-data" data-line-start="28" data-line-end="29">L’étape suivante était le cœur du sujet : <strong>l’optimisation du modèle par distillation</strong>. Encadré par mon maître de stage, j’ai commencé à m’auto-former à cette technique avancée.</p>
+<p class="has-line-data" data-line-start="30" data-line-end="31">La <strong>knowledge distillation</strong> consiste à entraîner un modèle compact (<em>student</em>) à imiter le comportement d’un modèle plus puissant (<em>teacher</em>), en espérant ainsi reproduire des performances proches tout en réduisant la <strong>complexité du modèle</strong>.</p>
+<p class="has-line-data" data-line-start="32" data-line-end="33">J’ai mis en œuvre une distillation de type <strong>response-based</strong>, où le modèle <em>student</em> apprend à reproduire les sorties (<em>logits</em>) du modèle <em>teacher</em>. J’ai également conçu un <strong>script d’expérimentation</strong> permettant de tester différentes combinaisons de paramètres :</p>
+<ul>
+<li class="has-line-data" data-line-start="34" data-line-end="35"><strong>Alpha</strong> : régule la pondération entre la vraie vérité terrain et les prédictions du <em>teacher</em>.</li>
+<li class="has-line-data" data-line-start="35" data-line-end="37"><strong>Température</strong> : adoucit les sorties du <em>teacher</em> pour faciliter l’apprentissage du <em>student</em>.</li>
+</ul>
+<hr>
+<h2 class="code-line" data-line-start=39 data-line-end=40 ><a id="Ouverture_vers_des_techniques_avances_39"></a>Ouverture vers des techniques avancées</h2>
+<p class="has-line-data" data-line-start="41" data-line-end="42">Au-delà de la distillation classique, je me suis également documenté et ai commencé à explorer d’autres approches d’optimisation :</p>
+<ul>
+<li class="has-line-data" data-line-start="43" data-line-end="44"><strong>Initialisation partielle</strong> du <em>student</em> à partir de certaines couches du <em>teacher</em>.</li>
+<li class="has-line-data" data-line-start="44" data-line-end="45"><strong>Allègement de l’architecture</strong> (réduction du nombre de couches, suppression du pooler).</li>
+<li class="has-line-data" data-line-start="45" data-line-end="50">Concepts avancés :
+<ul>
+<li class="has-line-data" data-line-start="46" data-line-end="47"><em>Mixtures of Experts</em></li>
+<li class="has-line-data" data-line-start="47" data-line-end="48"><em>Structure bottleneck</em></li>
+<li class="has-line-data" data-line-start="48" data-line-end="50"><em>Distillation multi-niveaux</em> (logits, attention, représentation intermédiaire)</li>
+</ul>
+</li>
+</ul>
+<p class="has-line-data" data-line-start="50" data-line-end="51">Même si je n’ai pas pu implémenter toutes ces méthodes par manque de temps, ce travail m’a permis de :</p>
+<ul>
+<li class="has-line-data" data-line-start="52" data-line-end="53">Développer une <strong>vision approfondie de l’optimisation</strong> de modèles de langage.</li>
+<li class="has-line-data" data-line-start="53" data-line-end="54">Mieux comprendre les <strong>enjeux liés aux compromis entre performance et légèreté</strong>.</li>
+<li class="has-line-data" data-line-start="54" data-line-end="55">Acquérir des <strong>compétences concrètes en expérimentation, évaluation et ingénierie de modèles IA</strong>.</li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+
+    <footer class="site-footer slanted-footer">
+
+      <a href="#top" class="smoothscroll scroll-top">
+        <span class="icon-keyboard_arrow_up"></span>
+      </a>
+
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Scenic Products</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Graphic Design</a></li>
+              <li><a href="#">Web Developers</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Company</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Resources</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Support</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 mb-4 mb-md-0">
+            <h3>Contact Us</h3>
+            <div class="footer-social">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-instagram"></span></a>
+              <a href="#"><span class="icon-linkedin"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <div class="col-12">
+            <p class="copyright"><small class="block">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </small></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+  </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/stickyfill.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    
+    <script src="js/custom.js"></script>
+  </body>
+</html>
