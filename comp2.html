@@ -39,7 +39,7 @@
      <header class="site-navbar mt-3" id="top">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="site-logo col-6"><a href="index.html">Zuuret</a></div>
+          <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
 
 
           
@@ -50,10 +50,10 @@
               <li><a href="about.html">Qui suis-je ?</a></li>
               <li><a href="portfolio.html">Compétences</a></li>
               <li class="has-children">
-                <a href="services.html" class="nav-link active">Pages</a>
+                <a href="portfolio.html" class="nav-link active">Compétences (pages)</a>
                 <ul class="dropdown">
-                  <li><a href="services.html">Compétence deux</a></li>
-                  <li><a href="service-single.html">Compétence quatre</a></li>
+                  <li><a href="comp1.html">Compétence deux</a></li>
+                  <li><a href="comp2.html">Compétence quatre</a></li>
                 </ul>
               </li>
               <li><a href="blog.html">Formation</a></li>
@@ -82,13 +82,6 @@
           </div>
         </div>
       </div>
-        
-      <!-- VIDEO -->
-      <div class="video-container">
-        <video autoplay loop="true">
-          <source type="video/mp4" src="videos/video.mp4">
-        </video>
-      </div>
 
       <a href="#next-section" class="smoothscroll scroll-button">
         <span class=" icon-keyboard_arrow_down"></span>
@@ -108,21 +101,46 @@
 <h2 class="code-line" data-line-start=8 data-line-end=9 ><a id="Ciblage_des_modles__de_la_base__loptimisation_8"></a>Ciblage des modèles : de la base à l’optimisation</h2>
 <p class="has-line-data" data-line-start="10" data-line-end="11">La première étape consistait à identifier une tâche sur laquelle un <strong>Large Language Model (LLM)</strong> comme <em>CodeBERT</em> atteignait au moins <strong>80 % de précision</strong>, sans modification du modèle, uniquement grâce à un traitement rigoureux des données.</p>
 <p class="has-line-data" data-line-start="12" data-line-end="13">Une fois cette base établie, il fallait identifier un <strong>Small Language Model (SLM)</strong>, comme <em>TinyBERT</em>, qui devait initialement atteindre environ <strong>60 % de précision</strong> sur la même tâche, afin de créer une <strong>marge d’amélioration justifiant la distillation</strong>.</p>
-<p class="has-line-data" data-line-start="14" data-line-end="15">Un des premiers défis rencontrés concernait les jeux de données. Certains présentaient de très bonnes performances sur les deux modèles, rendant la distillation peu pertinente (le SLM ne pouvant pas « rattraper » le LLM). J’ai donc dû chercher, tester et analyser de nouveaux jeux de données, d’abord à partir de critères théoriques (<strong>taille</strong>, <strong>qualité des labels</strong>, <strong>équilibre des classes</strong>), puis par des expérimentations concrètes (<strong>fine-tuning</strong>, <strong>évaluation des performances</strong>, <strong>visualisation des distributions</strong>).</p>
+<p class="has-line-data" data-line-start="14" data-line-end="15">Un des premiers défis rencontrés concernait les jeux de données. Certains présentaient de très bonnes performances sur les deux modèles, rendant la distillation peu pertinente (le SLM ne pouvant pas « rattraper » le LLM). J’ai donc dû chercher, tester et analyser de nouveaux jeux de données, d’abord à partir de critères théoriques que j'ai dû déterminer afin d'avoir un sorte de "barème" pour déterminer la qualité de celui-ci (<strong>taille</strong>, <strong>qualité des labels</strong>, <strong>équilibre des classes</strong>), puis par des expérimentations concrètes (<strong>fine-tuning</strong>, <strong>évaluation des performances</strong>, <strong>visualisation des distributions</strong>). Je pense avoir effectué un travail de recherche suffisamment pertinent puisque les résultats obtenus après cette étape étaient bien supérieur (CodeBERT à environ 81% et TinyBERT à environ 63%).</p>
 <hr>
-<h2 class="code-line" data-line-start=18 data-line-end=19 ><a id="Finetuning_des_modles_18"></a>Fine-tuning des modèles</h2>
-<p class="has-line-data" data-line-start="20" data-line-end="21">Une fois les modèles choisis (<em>CodeBERT</em> atteignant <strong>90 %</strong> et <em>TinyBERT</em> environ <strong>72 %</strong> après fine-tuning), j’ai spécialisé ces deux modèles sur une tâche bien précise : <strong>la détection de vulnérabilités dans les Smart Contracts</strong>.</p>
-<p class="has-line-data" data-line-start="22" data-line-end="23">J’ai mis en œuvre différentes techniques de <strong>fine-tuning</strong> et j’ai réalisé un suivi hebdomadaire sous forme de <strong>présentations synthétiques</strong> pour mon tuteur de stage. Ces échanges m’ont permis de mieux définir les prochaines étapes et d’approfondir certaines pistes techniques.</p>
+<h2 class="code-line" data-line-start=18 data-line-end=19><a id="Finetuning_des_modles_18"></a>Fine-tuning des modèles</h2> <p class="has-line-data" data-line-start="20" data-line-end="21">Une fois les modèles choisis (<em>CodeBERT</em> atteignant <strong>90 %</strong> et <em>TinyBERT</em> environ <strong>72 %</strong> après fine-tuning), j’ai spécialisé ces deux modèles sur une tâche bien précise : <strong>la détection de vulnérabilités dans les Smart Contracts</strong>.</p>
+<figure class="text-center my-4">
+  <img src="images/courbe.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 1 – Graphique illustrant les pertes de CodeBERT et TinyBERT</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="14" data-line-end="15">Comme on peut le voir dans la figure 1 ci-dessus, Les pertes de CodeBERT ont beaucoup diminués, et que celle de TinyBERT également malgré une amélioration plus faible. Ces deux courbes permettent alors de justifier une tentative de distillation.</p>
 <hr>
+ <p class="has-line-data" data-line-start="22" data-line-end="23">Pour parvenir à ces résultats, j'ai dû utiliser différentes technique de fine-tuning. Le <strong>fine-tuning</strong> consiste à reprendre un modèle pré-entraîné sur un large corpus généraliste, et à le réentraîner sur des données spécifiques pour qu’il s’adapte à la tâche ciblée tout en exploitant ses connaissances préalables. Pour bien maîtriser ces techniques, je me suis formé à travers la lecture de publications scientifiques, d’articles spécialisés et de nombreuses vidéos et conférences. J’ai ensuite appliqué ces méthodes en ajustant les hyperparamètres (taux d’apprentissage, nombre d’époques, gestion des couches réentraînées) en fonction du dataset et des performances observées.</p> <p class="has-line-data" data-line-start="24" data-line-end="25">Tout au long du projet, j’ai assuré un suivi hebdomadaire sous forme de <strong>présentations synthétiques</strong> auprès de mon tuteur de stage, me permettant d’échanger sur les résultats et d’affiner progressivement la stratégie de fine-tuning.</p> <hr>
 <h2 class="code-line" data-line-start=26 data-line-end=27 ><a id="Compression_via_knowledge_distillation_26"></a>Compression via knowledge distillation</h2>
 <p class="has-line-data" data-line-start="28" data-line-end="29">L’étape suivante était le cœur du sujet : <strong>l’optimisation du modèle par distillation</strong>. Encadré par mon maître de stage, j’ai commencé à m’auto-former à cette technique avancée.</p>
-<p class="has-line-data" data-line-start="30" data-line-end="31">La <strong>knowledge distillation</strong> consiste à entraîner un modèle compact (<em>student</em>) à imiter le comportement d’un modèle plus puissant (<em>teacher</em>), en espérant ainsi reproduire des performances proches tout en réduisant la <strong>complexité du modèle</strong>.</p>
+<figure class="text-center my-4">
+  <img src="images/kd.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 2 – Schéma illustrant la Knowledge Distillation</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="30" data-line-end="31">La <strong>knowledge distillation</strong>, schématisée dans la figure 2, consiste à entraîner un modèle compact (<em>student</em>) à imiter le comportement d’un modèle plus puissant (<em>teacher</em>), en espérant ainsi reproduire des performances proches tout en réduisant la <strong>complexité du modèle</strong>.</p>
 <p class="has-line-data" data-line-start="32" data-line-end="33">J’ai mis en œuvre une distillation de type <strong>response-based</strong>, où le modèle <em>student</em> apprend à reproduire les sorties (<em>logits</em>) du modèle <em>teacher</em>. J’ai également conçu un <strong>script d’expérimentation</strong> permettant de tester différentes combinaisons de paramètres :</p>
 <ul>
-<li class="has-line-data" data-line-start="34" data-line-end="35"><strong>Alpha</strong> : régule la pondération entre la vraie vérité terrain et les prédictions du <em>teacher</em>.</li>
+<li class="has-line-data" data-line-start="34" data-line-end="35"><strong>Alpha</strong> : régule la pondération entre la vraie vérité (les labels du jeu de donnée) et les prédictions du <em>teacher</em>.</li>
 <li class="has-line-data" data-line-start="35" data-line-end="37"><strong>Température</strong> : adoucit les sorties du <em>teacher</em> pour faciliter l’apprentissage du <em>student</em>.</li>
 </ul>
+<figure class="text-center my-4">
+  <img src="images/alphatemp.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 3 – Extrait de code illustrant l'expérimentation des différentes combinaisons de paramètre alpha et température</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="32" data-line-end="33">Dans la figure 3, on peut voir que pour pouvoir tester ces combinaisons, j'ai utilisé deux boucles imbriquées, qui est une logique d'implémentation déjà vu dans plusieurs cours d'algorithmique dés le S1.</p>
+<figure class="text-center my-4">
+  <img src="images/kdcode.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 4 – Extrait de code illustrant le calcul de la fonction de perte combinée pour la distillation</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="32" data-line-end="33">Dans ce passage, je mets en œuvre un mécanisme de knowledge distillation appris lors de mon travail de recherche documentaire. Je calcule deux fonctions de perte complémentaires : d’une part loss_kd, qui utilise les soft labels issus du teacher et applique un lissage via la température (principe vu dans plusieurs articles scientifiques), et d’autre part loss_ce qui compare directement aux labels réels pour maintenir l’apprentissage supervisé. La combinaison pondérée via alpha permet de réguler l’influence du teacher et de stabiliser l’apprentissage. Cette formulation m’a permis d’expérimenter et d’ajuster les hyperparamètres afin d’améliorer progressivement les performances du student.</p>
+
 <hr>
+<h2 class="code-line" data-line-start=26 data-line-end=27><a id="Distillation_multi_round_26"></a>Distillation multi-round</h2> <p class="has-line-data" data-line-start="28" data-line-end="29">Après avoir fine-tuné un modèle enseignant (<em>CodeBERT</em>), j’ai mis en place une approche de <strong>distillation multi-round</strong> afin d’améliorer progressivement les performances d’un modèle plus léger (<em>TinyBERT</em>).</p> <p class="has-line-data" data-line-start="30" data-line-end="31">Le principe de la distillation multi-round est d’effectuer plusieurs cycles successifs où l’élève (<em>TinyBERT</em>) apprend en s’ajustant aux sorties du professeur déjà spécialisé (<em>CodeBERT</em>). À chaque round, le modèle élève est affiné à partir des prédictions de la version précédente, permettant une amélioration progressive de ses performances.</p> <p class="has-line-data" data-line-start="32" data-line-end="33">J’ai implémenté un système permettant de réaliser automatiquement ces itérations de distillation, en suivant l’évolution des métriques après chaque round. Comme le montre la courbe ci-dessous, l’accuracy de <em>TinyBERT</em> est passée de <strong>44 %</strong> au démarrage à plus de <strong>60 %</strong> après 10 rounds, avec une nette progression durant les premiers cycles.</p> <p class="has-line-data" data-line-start="34" data-line-end="35">
+<figure>
+  <img src="images/multi-round.png" alt="Évolution TinyBERT" style="max-width:100%; height:auto;">
+  <figcaption>Figure 5 — Évolution des performances de TinyBERT au fil des rounds de distillation </figcaption>
+</figure>
+   <p class="has-line-data" data-line-start="36" data-line-end="37">Cette approche m’a permis d’obtenir un compromis intéressant entre taille de modèle et performance, rendant <em>TinyBERT</em> beaucoup plus efficace pour des contraintes de déploiement tout en conservant un bon niveau de précision.</p> <hr>
 <h2 class="code-line" data-line-start=39 data-line-end=40 ><a id="Ouverture_vers_des_techniques_avances_39"></a>Ouverture vers des techniques avancées</h2>
 <p class="has-line-data" data-line-start="41" data-line-end="42">Au-delà de la distillation classique, je me suis également documenté et ai commencé à explorer d’autres approches d’optimisation :</p>
 <ul>
@@ -152,60 +170,31 @@
 
     <footer class="site-footer slanted-footer">
 
-      <a href="#top" class="smoothscroll scroll-top">
-        <span class="icon-keyboard_arrow_up"></span>
-      </a>
+  <a href="#top" class="smoothscroll scroll-top">
+    <span class="icon-keyboard_arrow_up"></span>
+  </a>
 
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Scenic Products</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Graphic Design</a></li>
-              <li><a href="#">Web Developers</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Company</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Career</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Support</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Contact Us</h3>
-            <div class="footer-social">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-instagram"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-            </div>
-          </div>
-        </div>
+  <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
+    <h3>Mes réseaux</h3>
+    <div class="footer-social" style="display: flex; gap: 10px;">
+      <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
+      <a href="https://github.com/Yahia" target="_blank"><span class="icon-github"></span></a>
+    </div>
+  </div>
 
-        <div class="row text-center">
-          <div class="col-12">
-            <p class="copyright"><small class="block">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </small></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <div class="row text-center">
+    <div class="col-12">
+      <p class="copyright">
+        <small class="block">
+          Made with
+          <i class="icon-heart text-danger" aria-hidden="true"></i> by 
+          <a href="about.html" target="_blank">Yahia</a>
+        </small>
+      </p>
+    </div>
+  </div>
+
+</footer>
   
   </div>
 
@@ -223,3 +212,11 @@
     <script src="js/custom.js"></script>
   </body>
 </html>
+
+<style>
+   .home-section.section-hero.overlay.slanted {
+    background-color: #bc2323 !important;
+  }
+
+
+</style>

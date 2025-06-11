@@ -39,7 +39,7 @@
      <header class="site-navbar mt-3" id="top">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="site-logo col-6"><a href="index.html">Zuuret</a></div>
+          <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
 
 
           
@@ -50,10 +50,10 @@
               <li><a href="about.html">Qui suis-je ?</a></li>
               <li><a href="portfolio.html">Compétences</a></li>
               <li class="has-children">
-                <a href="services.html" class="nav-link active">Pages</a>
+                <a href="portfolio.html">Compétences (pages)</a>
                 <ul class="dropdown">
-                  <li><a href="services.html">Compétence deux</a></li>
-                  <li><a href="service-single.html">Compétence quatre</a></li>
+                  <li><a href="services.html" class="nav-link active">Compétence deux</a></li>
+                  <li><a href="comp2.html">Compétence quatre</a></li>
                 </ul>
               </li>
               <li><a href="blog.html">Formation</a></li>
@@ -83,12 +83,6 @@
         </div>
       </div>
         
-      <!-- VIDEO -->
-      <div class="video-container">
-        <video autoplay loop="true">
-          <source type="video/mp4" src="videos/video.mp4">
-        </video>
-      </div>
 
       <a href="#next-section" class="smoothscroll scroll-button">
         <span class=" icon-keyboard_arrow_down"></span>
@@ -120,10 +114,10 @@ J’avais déjà une expérience préalable avec ce type de modèle, acquise lor
 Pour cela, j’ai développé plusieurs <strong>classes Python spécifiques</strong> à chaque dataset, permettant de standardiser et optimiser les données fournies au modèle.</p>
 <h3 class="code-line" data-line-start=23 data-line-end=24 ><a id="Exemple__la_classe_VulnerabilityDataset_23"></a>Exemple : la classe <code>VulnerabilityDataset</code></h3>
 <figure class="text-center my-4">
-  <img src="images/img_1.jpg" alt="Schéma de la knowledge distillation" class="img-fluid">
-  <figcaption class="mt-2 text-muted">Figure 1 – Schéma illustrant la knowledge distillation</figcaption>
+  <img src="images/vul.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 1 – Extrait de code illustrant la classe python VulnerabilityDataset</figcaption>
 </figure>
-<p class="has-line-data" data-line-start="25" data-line-end="26">Ces classes encapsulaient la logique de traitement propre à chaque jeu de données, notamment :</p>
+<p class="has-line-data" data-line-start="25" data-line-end="26">Les différentes classes encapsulaient la logique de traitement propre à chaque jeu de données, la figure 1 est un exemple de classe contenant :</p>
 <ul>
 <li class="has-line-data" data-line-start="27" data-line-end="29">
 <p class="has-line-data" data-line-start="27" data-line-end="28"><strong>La tokenisation des textes (extraits de code)</strong> : en utilisant un tokenizer adapté (par exemple celui de CodeBERT), le texte brut était converti en séquences numériques exploitables par le modèle. Cette étape incluait la troncation des séquences trop longues et le padding pour uniformiser leur taille conformément aux contraintes du modèle.</p>
@@ -142,11 +136,24 @@ Pour cela, j’ai développé plusieurs <strong>classes Python spécifiques</str
 <p class="has-line-data" data-line-start="37" data-line-end="39">Malgré ces efforts, je n’ai pas obtenu de résultats satisfaisants sur certains jeux de données à cause de leur qualité.<br>
 Certains datasets présentaient un nombre insuffisant d’exemples, d’autres souffraient de données manquantes ou mal labellisées, ce qui rendait l’apprentissage contre-productif.</p>
 <p class="has-line-data" data-line-start="40" data-line-end="41">Ne pouvant pas modifier directement le modèle pour l’instant, j’ai décidé de m’auto-former au <strong>prétraitement des données</strong>, une étape aussi intéressante que chronophage, car chaque dataset nécessitait un traitement spécifique.</p>
-<p class="has-line-data" data-line-start="42" data-line-end="43">Pour chaque jeu de données, j’ai généré différents <strong>graphiques</strong> afin d’analyser la répartition des classes, détecter les valeurs manquantes, et décider de la meilleure stratégie :</p>
+<figure class="text-center my-4">
+  <img src="images/repartition.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 2 – Graphique illustrant la répartition des classes dans un jeu de donnée</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="42" data-line-end="43">Pour chaque jeu de données, j’ai généré différents <strong>graphiques</strong> afin d’analyser la répartition des classes, détecter les valeurs manquantes, et décider de la meilleure stratégie.
+  Par exemple, on peut voir en figure 2 que la classe "0" correspond à une proportion très minime du jeu de donnée, tandis que la classe "2" est quant à elle sur-représenté. Ce qui posera 
+  problème lors de l'entrainement du modèle car cela favorisera les biais (le modèle privilégiera la classe "2"). Ainsi, j'ai donc dû apprendre et à chaque fois analyser mes résultats pour trouver différentes stratégie, par exemple :</p>
 <ul>
 <li class="has-line-data" data-line-start="43" data-line-end="44">supprimer les données manquantes ;</li>
 <li class="has-line-data" data-line-start="44" data-line-end="46">ou, dans certains cas, appliquer du <strong>sous-échantillonnage</strong> ou du <strong>sur-échantillonnage</strong> pour rééquilibrer les classes sous-représentées.</li>
 </ul>
+<figure class="text-center my-4">
+  <img src="images/distributionfix.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 3 – Extrait de code illustrant un script python permettant le rééchantillonnage.</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="37" data-line-end="39">Une des solutions que j'ai mis en place, est le ré-echantillonnage. En l'occurence, en figure trois, cette fonction permet de choisir 
+  un pourcentage, une colonne du jeu de donnée et cette fonction permettra de "forcer" une représentation. Si on lui fournit 10 et la colonne DoS, alors DoS prendra 10% de la proportion total du jeu de donnée.<br>
+
 <h2 class="code-line" data-line-start=46 data-line-end=47 ><a id="Rpartition_des_donnes_pour_lentranement_et_lvaluation_46"></a>Répartition des données pour l’entraînement et l’évaluation</h2>
 <p class="has-line-data" data-line-start="48" data-line-end="50">J’ai également étudié la répartition optimale des données entre l’entraînement et l’évaluation.<br>
 En effet, lors de l’entraînement d’un modèle, les données sont utilisées à deux étapes :</p>
@@ -158,7 +165,13 @@ En effet, lors de l’entraînement d’un modèle, les données sont utilisées
 Cette tâche est un compromis délicat : plus la part dédiée à l’entraînement est grande, meilleures seront les performances du modèle, mais la fiabilité de l’évaluation en pâtit.</p>
 <h2 class="code-line" data-line-start=57 data-line-end=58 ><a id="Rsultats_et_acquis_57"></a>Résultats et acquis</h2>
 <p class="has-line-data" data-line-start="59" data-line-end="60">Finalement, grâce à ces différentes techniques de préprocessing et à la qualité d’un <strong>nouveau jeu de données fourni par mon professeur</strong>, j’ai réussi à atteindre une précision <strong>supérieure à 80 %</strong> avec CodeBERT.</p>
-<p class="has-line-data" data-line-start="61" data-line-end="62">Toutes ces étapes m’ont permis de développer une <strong>compréhension approfondie de la science des données</strong>, et plus particulièrement des enjeux liés au traitement et à la préparation des données dans le cadre de l’intelligence artificielle.</p>
+<figure class="text-center my-4">
+  <img src="images/codebert.png" alt="Schéma de la knowledge distillation" class="img-fluid">
+  <figcaption class="mt-2 text-muted">Figure 4 – Graphique illustrant la matrice de confusion de CodeBERT</figcaption>
+</figure>
+<p class="has-line-data" data-line-start="61" data-line-end="62">Comme on peut le voir sur le graphique figure 4, lorsque le modèle prédit "1" le vrai label était la plupart du temps "1" également, de même pour le label "2" (Ici, il n'y a que deux classes car le nouveau jeu de donnée utilisé est fait pour une classification binaire vulnérable/safe).</p>
+
+<p class="has-line-data" data-line-start="61" data-line-end="62">Toutes ces étapes m’ont permis de développer une <strong>bien meilleure compréhension de la science des données</strong>, et plus particulièrement des enjeux liés au traitement et à la préparation des données dans le cadre de l’intelligence artificielle.</p>
           </div>
         </div>
       </div>
@@ -169,60 +182,31 @@ Cette tâche est un compromis délicat : plus la part dédiée à l’entraînem
 
     <footer class="site-footer slanted-footer">
 
-      <a href="#top" class="smoothscroll scroll-top">
-        <span class="icon-keyboard_arrow_up"></span>
-      </a>
+  <a href="#top" class="smoothscroll scroll-top">
+    <span class="icon-keyboard_arrow_up"></span>
+  </a>
 
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Scenic Products</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Graphic Design</a></li>
-              <li><a href="#">Web Developers</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Company</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Career</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Support</h3>
-            <ul class="list-unstyled">
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-3 mb-4 mb-md-0">
-            <h3>Contact Us</h3>
-            <div class="footer-social">
-              <a href="#"><span class="icon-facebook"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-instagram"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
-            </div>
-          </div>
-        </div>
+  <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
+    <h3>Mes réseaux</h3>
+    <div class="footer-social" style="display: flex; gap: 10px;">
+      <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
+      <a href="https://github.com/Yahia" target="_blank"><span class="icon-github"></span></a>
+    </div>
+  </div>
 
-        <div class="row text-center">
-          <div class="col-12">
-            <p class="copyright"><small class="block">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </small></p>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <div class="row text-center">
+    <div class="col-12">
+      <p class="copyright">
+        <small class="block">
+          Made with
+          <i class="icon-heart text-danger" aria-hidden="true"></i> by 
+          <a href="about.html" target="_blank">Yahia</a>
+        </small>
+      </p>
+    </div>
+  </div>
+
+</footer>
   
   </div>
 
@@ -240,3 +224,11 @@ Cette tâche est un compromis délicat : plus la part dédiée à l’entraînem
     <script src="js/custom.js"></script>
   </body>
 </html>
+
+<style>
+   .home-section.section-hero.overlay.slanted {
+    background-color: #bc2323 !important;
+  }
+
+
+</style>
