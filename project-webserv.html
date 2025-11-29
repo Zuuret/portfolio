@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Webserv - Serveur HTTP C++98</title>
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #e0f7ff;
+            border-left: 3px solid #00f2fe;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .challenge-card {
+            border-left: 4px solid #ef5350;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .solution-card {
+            border-left: 4px solid #66bb6a;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #4facfe15 0%, #00f2fe15 100%);
+            border-radius: 8px;
+            margin: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00f2fe;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Chargement...</span>
+    </div>
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                       <li><a href="about.html">Qui suis-je ?</a></li>
+                        <li><a href="blog.html">Formation</a></li>
+                        <li><a href="projets.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+                    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-gradient text-white py-20" id="hero">
+        <div class="container mx-auto px-4">
+            <div class="py-20">
+                <h1 class="text-5xl font-bold mb-4">Webserv</h1>
+                <p class="text-xl opacity-90 mb-8 max-w-2xl">Serveur HTTP multiclient en C++98 - Projet personnel</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="px-6 py-3 bg-white text-cyan-600 font-semibold rounded hover:shadow-lg transition">
+                        Voir sur GitHub
+                    </a>
+                    <a href="#details" class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:bg-opacity-10 transition">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section class="py-16 bg-gray-50" id="resume">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold mb-6">Résumé du Projet</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    <strong>Webserv</strong> est un serveur HTTP complet implémenté en <strong>C++98</strong> selon les spécifications HTTP/1.1. 
+                    Le projet couvre tous les aspects d'un serveur web production : gestion des sockets, 
+                    parsing de requêtes, routage, gestion CGI et génération de réponses.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Projet <strong>presque terminé</strong> : serveur entièrement fonctionnel, architecture modulaire, 
+                    gestion multiclient avec <strong>poll()</strong>, support complet GET/POST/DELETE, redirections, 
+                    et exécution CGI (PHP/Python/etc).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section class="py-16" id="details">
+        <div class="container mx-auto px-4">
+            
+            <!-- OBJECTIFS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-cyan-500 pb-2">Objectifs du Projet</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Sockets & Networking</h3>
+                        <p class="text-gray-700">Implémenter serveur TCP non-bloquant avec poll() pour gérer clients simultanément</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Parser HTTP</h3>
+                        <p class="text-gray-700">Parser robuste des requêtes HTTP/1.1 (method, path, headers, body)</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Configuration</h3>
+                        <p class="text-gray-700">Lire et appliquer fichier nginx-style pour ports, root, redirections, etc.</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Routage & CGI</h3>
+                        <p class="text-gray-700">Router requêtes, servir fichiers statiques, exécuter scripts CGI (PHP, Python)</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Réponses HTTP</h3>
+                        <p class="text-gray-700">Générer réponses complètes avec headers, content-type, status codes appropriés</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Gestion d'Erreurs</h3>
+                        <p class="text-gray-700">Pages d'erreur 404, 500, timeouts, et gestion gracieuse des connexions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPETENCES TECHNIQUES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-cyan-500 pb-2">Compétences Techniques</h2>
+                <div class="flex flex-wrap">
+                    <span class="tech-badge">C++98</span>
+                    <span class="tech-badge">Sockets</span>
+                    <span class="tech-badge">poll()</span>
+                    <span class="tech-badge">HTTP/1.1</span>
+                    <span class="tech-badge">Parser</span>
+                    <span class="tech-badge">CGI</span>
+                    <span class="tech-badge">Networking</span>
+                    <span class="tech-badge">Multithreading Simulation</span>
+                    <span class="tech-badge">Configuration</span>
+                    <span class="tech-badge">File I/O</span>
+                </div>
+            </div>
+
+            <!-- DEFIS RENCONTRES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-red-500 pb-2">Défis Rencontrés</h2>
+                
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🌐 Non-Bloquant avec poll()</h3>
+                    <p class="text-gray-700">
+                        poll() retourne liste d'événements prêts, mais il faut gérer state machine pour 
+                        chaque client (lecture → parsing → réponse → envoi). Sinon risque de lecture partielle.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">📝 Parser Robuste</h3>
+                    <p class="text-gray-700">
+                        HTTP headers multiples, chunked encoding, multipart form-data, bodies vides ou partiels. 
+                        Parser naïf échoue sur cas réels.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🔄 Gestion CGI</h3>
+                    <p class="text-gray-700">
+                        Fork pour CGI doit pas bloquer serveur. Capturer stdout du processus, 
+                        gérer timeouts si script traîne.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">📐 Configuration</h3>
+                    <p class="text-gray-700">
+                        Fichier config nginx-style compliqué. Syntaxe flexible, scopes multiples, 
+                        validation et priorités des règles.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🔗 Gestion Buffers</h3>
+                    <p class="text-gray-700">
+                        Buffers recv/send peuvent être partiels. Doit tracker offset et continuer 
+                        envoi/réception état lors appel poll() suivant.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SOLUTIONS ET APPRENTISSAGES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-green-500 pb-2">Solutions Apportées & Apprentissages</h2>
+                
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ State Machine par Client</h3>
+                    <p class="text-gray-700 mb-3">
+                        Chaque client a état (READING, PARSING, SENDING, CLOSED). poll() retour, 
+                        on progresse état selon événements sans bloquer.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Parser Incrémental</h3>
+                    <p class="text-gray-700 mb-3">
+                        Parser ne consomme que bytes complètement lus. Reste en buffer pour appel suivant. 
+                        Gère headers et body séparément.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ CGI Non-Bloquant</h3>
+                    <p class="text-gray-700 mb-3">
+                        Fork pour script, rediriger stdout vers pipe, ajouter pipe à poll(), 
+                        lire réponse progressivement. Timeout si délai dépassé.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Architecture Modulaire</h3>
+                    <p class="text-gray-700 mb-3">
+                        Classes : Server, Socket, Client, Request, Response, ConfigParser, Router. 
+                        Chacune responsabilité claire, facile debug et extension.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Buffers Circulaires</h3>
+                    <p class="text-gray-700 mb-3">
+                        Recv et Send buffers avec offsets. Permet gestion robuste données partielles 
+                        sans recopie coûteuse.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CODE SNIPPETS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-cyan-500 pb-2">Extraits de Code</h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Boucle Event avec poll()</h3>
+                    <div class="code-snippet">
+<pre>void Server::run()
+{
+    std::vector&lt;pollfd&gt; fds;
+    
+    while (g_running)
+    {
+        // Build pollfd array
+        fds.clear();
+        for (size_t i = 0; i < _clients.size(); ++i)
+            fds.push_back(_clients[i].getPollFd());
+        
+        int poll_ret = poll(fds.data(), fds.size(), TIMEOUT_MS);
+        if (poll_ret < 0)
+            throw std::runtime_error("poll error");
+        
+        // Process events
+        for (size_t i = 0; i < fds.size(); ++i)
+        {
+            if (fds[i].revents & POLLIN)
+                _clients[i].handleRead();
+            if (fds[i].revents & POLLOUT)
+                _clients[i].handleWrite();
+            if (fds[i].revents & (POLLERR | POLLHUP))
+                _clients[i].close();
+        }
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Parser HTTP Incrémental</h3>
+                    <div class="code-snippet">
+<pre>bool Request::parse(const std::string &data)
+{
+    if (_state == HEADERS)
+    {
+        size_t header_end = data.find("\r\n\r\n");
+        if (header_end == std::string::npos)
+            return false; // Incomplete
+        
+        std::string header_part = data.substr(0, header_end);
+        _parseHeaders(header_part);
+        _state = BODY;
+        _body_offset = header_end + 4;
+    }
+    
+    if (_state == BODY)
+    {
+        int body_len = std::stoi(_headers["Content-Length"]);
+        std::string body = data.substr(_body_offset);
+        
+        if (body.length() >= body_len)
+        {
+            _body = body.substr(0, body_len);
+            _state = COMPLETE;
+            return true;
+        }
+    }
+    return false;
+}</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Gestion CGI</h3>
+                    <div class="code-snippet">
+<pre>void Client::executeCGI(const std::string &script)
+{
+    int pipe_fd[2];
+    pipe(pipe_fd);
+    
+    pid_t pid = fork();
+    if (pid == 0) // Child
+    {
+        dup2(pipe_fd[1], STDOUT_FILENO);
+        close(pipe_fd[0]);
+        close(pipe_fd[1]);
+        
+        setenv("REQUEST_METHOD", _request.getMethod().c_str(), 1);
+        setenv("QUERY_STRING", _request.getQuery().c_str(), 1);
+        
+        execve(script.c_str(), NULL, environ);
+        exit(EXIT_FAILURE);
+    }
+    
+    // Parent
+    close(pipe_fd[1]);
+    _cgi_fd = pipe_fd[0];
+    _cgi_pid = pid;
+    
+    // Read output progressively in next poll() calls
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTATS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-cyan-500 pb-2">Résultats & Métriques</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Complétude</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">C++98</div>
+                        <div class="stat-label">Compliant</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">8K</div>
+                        <div class="stat-label">Lignes de code</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Clients support</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-cyan-500 pb-2">Stack Technologique</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">⚙️</div>
+                        <h3 class="font-bold">C++98</h3>
+                        <p class="text-sm text-gray-600">Langage strict (pas C++11+)</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🔌</div>
+                        <h3 class="font-bold">Sockets BSD</h3>
+                        <p class="text-sm text-gray-600">TCP/IP bas niveau</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📊</div>
+                        <h3 class="font-bold">poll()</h3>
+                        <p class="text-sm text-gray-600">Multiplexing I/O</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📡</div>
+                        <h3 class="font-bold">HTTP/1.1</h3>
+                        <p class="text-sm text-gray-600">Protocole web standard</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">⚡</div>
+                        <h3 class="font-bold">CGI</h3>
+                        <p class="text-sm text-gray-600">Exécution scripts externes</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📝</div>
+                        <h3 class="font-bold">nginx Config</h3>
+                        <p class="text-sm text-gray-600">Format configuration</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY LEARNINGS -->
+            <div class="mb-16 p-8 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg">
+                <h2 class="text-3xl font-bold mb-6">🎓 Points Clés Appris</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-cyan-500 font-bold mr-3">→</span>
+                        <span>poll() permet gestion vraiment non-bloquante d'événements multiples</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-500 font-bold mr-3">→</span>
+                        <span>State machines essentielles pour clients en états différents</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-500 font-bold mr-3">→</span>
+                        <span>HTTP est protocole texte simple mais avec nombreux détails subtils</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-500 font-bold mr-3">→</span>
+                        <span>Buffers circulaires évitent recopies coûteuses avec données partielles</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-cyan-500 font-bold mr-3">→</span>
+                        <span>Architecture modulaire critique pour maintenabilité projet complexe</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Intéressé par ce projet ?</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Consultez le code source et lancez le serveur pour tester!</p>
+            <a href="#" class="px-8 py-3 bg-cyan-600 text-white font-semibold rounded hover:bg-cyan-700 transition">
+                Voir sur GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer slanted-footer">
+        <a href="#top" class="smoothscroll scroll-top">
+            <span class="icon-keyboard_arrow_up"></span>
+        </a>
+        <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
+            <h3>Mes réseaux</h3>
+            <div class="footer-social" style="display: flex; gap: 10px;">
+                <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
+                <a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span></a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12">
+                <p class="copyright">
+                    <small class="block">Made by Yahia</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -47,16 +49,11 @@
             <ul class="site-menu js-clone-nav d-none d-lg-block">
               <li><a href="index.html" class="nav-link">Accueil</a></li>
               <li><a href="about.html"  class="active">Qui suis-je ?</a></li>
-              <li><a href="portfolio.html">Compétences</a></li>
-              <li class="has-children">
-                <a href="portfolio.html">Compétences (pages)</a>
-                <ul class="dropdown">
-                  <li><a href="comp1.html">Compétence deux</a></li>
-                  <li><a href="comp2.html">Compétence quatre</a></li>
-                </ul>
-              </li>
+              <li><a href="skills.html">Compétences</a></li>
+              <li><a href="projets.html">Projets</a></li>
               <li><a href="blog.html">Formation</a></li>
-              <li><a href="contact.html">Projets</a></li>
+              <li><a href="contact-form.html">Contact</a></li>
+              <li><a href="CV.txt" download class="nav-link" style="color: #0066cc;">CV</a></li>
             </ul>
           </nav>
 
@@ -76,7 +73,7 @@
           <div class="col-md-8 text-center">
             <h1>Qui suis-je ?</h1>
             <div class="mx-auto w-75">
-              <p>Étudiant en deuxième année d’IUT Informatique à Belfort, je développe des compétences en développement logiciel, en intelligence artificielle et en cybersécurité. Curieux, autonome et passionné, j’ai déjà réalisé plusieurs projets en C, Python, Vue.js ou encore Node.js. 
+              <p>Étudiant en troisième année d’IUT Informatique à Belfort, je développe des compétences en développement logiciel, en intelligence artificielle et en cybersécurité. Curieux, autonome et passionné, j’ai déjà réalisé plusieurs projets en C, Python, Vue.js ou encore Node.js. 
                 Je m’intéresse particulièrement aux modèles de langage, à l’optimisation de code et à la sécurité informatique. </p>
             </div>
           </div>
@@ -97,6 +94,9 @@
             <img src="images/stud.webp" alt="Image" class="img-fluid mb-4 rounded ">
             <h3>Yahia Kherza</h3>
             <p class="text-muted">Etudiant développeur</p>
+            <a href="CV.txt" download class="btn btn-primary btn-sm mt-3" style="display: inline-block;">
+              <span class="icon-download" style="margin-right: 5px;"></span>Télécharger mon CV
+            </a>
           
           </div>
 
@@ -106,31 +106,49 @@
       </div>
     </section>
 
-    <footer class="site-footer slanted-footer">
-
-  <a href="#top" class="smoothscroll scroll-top">
-    <span class="icon-keyboard_arrow_up"></span>
-  </a>
-
-  <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
-    <h3>Mes réseaux</h3>
-    <div class="footer-social" style="display: flex; gap: 10px;">
-      <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
-      <a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span></a>
-    </div>
-  </div>
-
-  <div class="row text-center">
-    <div class="col-12">
-      <p class="copyright">
-        <small class="block">
-          Made by Yahia</a>
-        </small>
-      </p>
-    </div>
-  </div>
-
-</footer>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3>À propos</h3>
+                            <p>Je suis Yahia, développeur passionné par le code et l'innovation. Toujours en apprentissage continu.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Navigation</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">Accueil</a></li>
+                                <li><a href="about.html">Qui suis-je ?</a></li>
+                                <li><a href="skills.html">Compétences</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Réseaux</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.linkedin.com/in/yahia-k-093397341/" target="_blank"><span class="icon-linkedin"></span> LinkedIn</a></li>
+                                <li><a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span> GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-right">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/yahia-k-093397341/" class="pl-0 pr-3"><span class="icon-linkedin"></span></a>
+                        <a href="https://github.com/Zuuret" class="pl-3 pr-3"><span class="icon-github"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-7 text-center">
+                    <p class="copyright">
+                        <small>Made by Yahia © 2025</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
   
   </div>
 

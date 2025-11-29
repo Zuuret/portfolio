@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dîner des Philosophes - Synchronisation Concurrence</title>
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f5f7fa;
+            border-left: 3px solid #0066cc;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .challenge-card {
+            border-left: 4px solid #ef5350;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-card {
+            border-left: 4px solid #66bb6a;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #0066cc;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Chargement...</span>
+    </div>
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="about.html">Qui suis-je ?</a></li>
+                        <li><a href="skills.html">Compétences</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="blog.html">Formation</a></li>
+                        <li><a href="contact-form.html">Contact</a></li>
+                        <li><a href="CV.txt" download class="nav-link" style="color: #0066cc;">CV</a></li>
+                    </ul>
+                </nav>
+                <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+                    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="home-section section-hero overlay slanted" style="background-color: #0066cc;" id="hero">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1>Philosophes</h1>
+                    <div class="mx-auto w-75">
+                        <p>Problème de synchronisation et concurrence - Projet personnel</p>
+                    </div>
+                    <p class="mt-5">
+                        <a href="#details" class="btn btn-outline-white btn-md smoothscroll">Détails du projet</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a href="#resume" class="scroll-button smoothscroll">
+            <span class="icon-keyboard_arrow_down"></span>
+        </a>
+    </section>
+
+    <!-- DESCRIPTION & MAIN CONTENT -->
+    <section class="site-section" id="details">
+        <div class="container">
+            <!-- OBJECTIF -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h3 class="section-title-sub text-primary">Projet Personnel</h3>
+                    <h2 class="section-title mb-4">Objectif du Projet</h2>
+                    <p class="mb-3">
+                        Implémenter le problème classique du Dîner des Philosophes de Dijkstra en C avec threads POSIX. 
+                        5 philosophes, 5 fourchettes, chacun doit penser puis manger. Les défis : éviter deadlock, famine, 
+                        et race conditions. Démonstration complète de synchronisation, mutex, et algorithmes de coordination.
+                    </p>
+                    <p>
+                        Le nombre de philosophes est une variable N modifiable au lancement du programme.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TECHNOLOGIES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h3 class="section-title-sub text-primary">Stack</h3>
+                    <h2 class="section-title mb-4">Technologies Utilisées</h2>
+                    <div class="block__16443 mb-4">
+                        <span class="tech-badge">C99</span>
+                        <span class="tech-badge">POSIX Threads</span>
+                        <span class="tech-badge">Mutex</span>
+                        <span class="tech-badge">Condition Variables</span>
+                        <span class="tech-badge">Synchronisation</span>
+                        <span class="tech-badge">Concurrence</span>
+                        <span class="tech-badge">Valgrind</span>
+                        <span class="tech-badge">GDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FONCTIONNALITES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Fonctionnalités et Aspects Clés</h2>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>N Philosophers Threads</h3>
+                        <p>Chaque philosophe alternant penser et manger</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Ressource Limitée</h3>
+                        <p>N fourchettes seulement pour N philosophes</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Éviter Deadlock</h3>
+                        <p>Algorithme bancaire ou asymétrique</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Pas de Famine</h3>
+                        <p>Tous philosophes mangent équitablement</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>State Machine</h3>
+                        <p>États : thinking, hungry, eating</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Monitoring</h3>
+                        <p>Logs temps réel et statistiques</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEFIS ET SOLUTIONS -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Défis Théoriques et Solutions</h2>
+                </div>
+                <div class="col-12">
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Deadlock</h3>
+                        <p class="mb-3">
+                            Scénario classique : tous philosophes prennent leur fourchette gauche en même temps, 
+                            puis attendent la droite qui ne viendra jamais.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Asymétrie - un philosophe prend droite puis gauche, autres prennent gauche puis droite. 
+                            Ou utiliser monitor pattern avec condition variables.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Famine</h3>
+                        <p class="mb-3">
+                            Même sans deadlock, un philosophe peut avoir très peu de chances manger 
+                            si ses voisins sont agressifs.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Monitor avec state machine explicit + condition variables per philosopher. 
+                            Vérifier que tous états doivent progresser.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Race Conditions</h3>
+                        <p class="mb-3">
+                            Accès concurrents à fourchettes et variables d'état sans protection. 
+                            Comportement imprévisible.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Tous accès à ressources partagées protégés par mutex. 
+                            Condition variables pour coordination.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Complexité Temporelle</h3>
+                        <p class="mb-3">
+                            Déterminer si toutes ces conditions sont réellement satisfaites demande analyse fine. 
+                            Très difficile à prouver par test seul.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Simulation longue avec logging détaillé, analyse statistiques, 
+                            preuve formelle du pattern utilisé.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Compréhension Théorique</h3>
+                        <p class="mb-3">
+                            Il faut comprendre mutex, semaphores, condition variables, 
+                            et patterns de synchronisation.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Étude intensive documentation POSIX, articles académiques sur Dijkstra, 
+                            implémentation pas à pas, tests exhaustifs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MON ROLE -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div style="padding: 2rem; background: #f0f5ff; border-radius: 8px; border-left: 4px solid #0066cc;">
+                        <h2 class="section-title mb-4">Mon Rôle</h2>
+                        <p class="mb-3">
+                            Projet personnel d'apprentissage profond sur synchronisation multi-threads.
+                        </p>
+                        <p class="mb-3">
+                            Mes responsabilités :
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-2">• Recherche et compréhension du problème théorique</li>
+                            <li class="mb-2">• Design de la solution (monitor pattern)</li>
+                            <li class="mb-2">• Implémentation en C avec POSIX threads</li>
+                            <li class="mb-2">• Gestion mutex et condition variables</li>
+                            <li class="mb-2">• Débuggage avec GDB et Valgrind</li>
+                            <li class="mb-2">• Testing de deadlock/famine/race conditions</li>
+                            <li>• Documentation et explication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTATS -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Résultats et Métriques</h2>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Deadlocks</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Famines</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Équitable</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">N</div>
+                        <div class="stat-label">Threads</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVOLUTIONS POSSIBLES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div style="padding: 2rem; background: #f9f9f9; border-radius: 8px;">
+                        <h2 class="section-title mb-4">Évolutions Possibles</h2>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-2">• Comparaison multiple solutions (semaphores vs monitor vs chandy-misra)</li>
+                            <li class="mb-2">• Simulation graphique (temps réel)</li>
+                            <li class="mb-2">• Benchmarks performance</li>
+                            <li>• Analyse automatique deadlock detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE SNIPPET -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Extrait de Code</h2>
+                    <div class="code-snippet">
+<pre>// Philosopher routine avec monitor pattern
+void *philosopher_routine(void *arg)
+{
+    int id = *(int *)arg;
+    
+    while (!g_end_simulation)
+    {
+        // THINKING
+        usleep(random_sleep());
+        
+        // HUNGRY
+        pthread_mutex_lock(&g_mutex);
+        g_state[id] = HUNGRY;
+        
+        // Vérifier si on peut manger
+        while (!can_eat(id))
+            pthread_cond_wait(&g_cond[id], &g_mutex);
+        
+        g_state[id] = EATING;
+        g_meals[id]++;
+        pthread_mutex_unlock(&g_mutex);
+        
+        // EATING
+        usleep(random_sleep());
+        
+        // DROP FORKS
+        pthread_mutex_lock(&g_mutex);
+        g_state[id] = THINKING;
+        
+        // Notifier voisins qu'une fourchette libre
+        if (can_eat((id - 1 + N) % N))
+            pthread_cond_signal(&g_cond[(id - 1 + N) % N]);
+        if (can_eat((id + 1) % N))
+            pthread_cond_signal(&g_cond[(id + 1) % N]);
+            
+        pthread_mutex_unlock(&g_mutex);
+    }
+    
+    return NULL;
+}
+
+// Vérifier si philosopher peut manger
+int can_eat(int id)
+{
+    return (g_state[id] == HUNGRY &&
+            g_state[(id - 1 + N) % N] != EATING &&
+            g_state[(id + 1) % N] != EATING);
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="home-section cta-section overlay" id="cta-section" style="background-color: #0066cc;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h2 class="section-title" style="color: white;">Voir le projet complet</h2>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Consultez le code source sur GitHub.</p>
+                    <p>
+                        <a href="https://github.com/Zuuret/philo" class="btn btn-white btn-md" target="_blank">Code sur GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3>À propos</h3>
+                            <p>Je suis Yahia, développeur passionné par le code et l'innovation. Toujours en apprentissage continu.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Navigation</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">Accueil</a></li>
+                                <li><a href="about.html">Qui suis-je ?</a></li>
+                                <li><a href="skills.html">Compétences</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Réseaux</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.linkedin.com/in/yahia-k-093397341/" target="_blank"><span class="icon-linkedin"></span> LinkedIn</a></li>
+                                <li><a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span> GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-right">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/yahia-k-093397341/" class="pl-0 pr-3"><span class="icon-linkedin"></span></a>
+                        <a href="https://github.com/Zuuret" class="pl-3 pr-3"><span class="icon-github"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-7 text-center">
+                    <p class="copyright">
+                        <small>Made by Yahia © 2025</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

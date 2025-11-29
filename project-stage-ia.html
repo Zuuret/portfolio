@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Optimisation et Compression de Modèles - Stage</title>
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f0f4ff;
+            border-left: 3px solid #667eea;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .challenge-card {
+            border-left: 4px solid #ef5350;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .solution-card {
+            border-left: 4px solid #66bb6a;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-radius: 8px;
+            margin: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Chargement...</span>
+    </div>
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                       <li><a href="about.html">Qui suis-je ?</a></li>
+                        <li><a href="blog.html">Formation</a></li>
+                        <li><a href="projets.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+                    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-gradient text-white py-20" id="hero">
+        <div class="container mx-auto px-4">
+            <div class="py-20">
+                <h1 class="text-5xl font-bold mb-4">Stage IA - Distillation de Modèles</h1>
+                <p class="text-xl opacity-90 mb-8 max-w-2xl">Optimisation et compression de modèles de langage via knowledge distillation</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="px-6 py-3 bg-white text-purple-600 font-semibold rounded hover:shadow-lg transition">
+                        Voir sur GitHub
+                    </a>
+                    <a href="#details" class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:bg-opacity-10 transition">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section class="py-16 bg-gray-50" id="resume">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold mb-6">Résumé du Projet</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Stage de 8 semaines au laboratoire Femto-ST (service DISC) à Belfort sous la direction de Mr. Noura. 
+                    L'objectif principal était d'étudier et d'implémenter des techniques de compression de modèles de langage, 
+                    particulièrement la <strong>knowledge distillation</strong> pour réduire la taille et la latence d'inférence.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Résultat clé : compression de <strong>CodeBERT</strong> vers <strong>TinyBERT</strong> avec une amélioration 
+                    des performances de 60% à 80%+ sur 10 rounds de distillation, tout en réduisant significativement la complexité du modèle.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section class="py-16" id="details">
+        <div class="container mx-auto px-4">
+            
+            <!-- OBJECTIFS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-purple-500 pb-2">Objectifs du Projet</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Baseline Performance</h3>
+                        <p class="text-gray-700">Identifier une tâche où CodeBERT atteint 80%+ de précision sans modification du modèle</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Sélection de Modèle</h3>
+                        <p class="text-gray-700">Trouver un Small LM (TinyBERT) avec ~60% initial pour créer une marge d'amélioration</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Fine-tuning</h3>
+                        <p class="text-gray-700">Optimiser les hyperparamètres (learning rate, epochs, layer unfreezing)</p>
+                    </div>
+                    <div class="p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="font-bold text-blue-900 mb-2">Distillation</h3>
+                        <p class="text-gray-700">Implémenter knowledge distillation multi-round pour améliorer TinyBERT</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPETENCES TECHNIQUES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-purple-500 pb-2">Compétences Techniques</h2>
+                <div class="flex flex-wrap">
+                    <span class="tech-badge">Python 3</span>
+                    <span class="tech-badge">PyTorch</span>
+                    <span class="tech-badge">HuggingFace</span>
+                    <span class="tech-badge">Transformers</span>
+                    <span class="tech-badge">Deep Learning</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">CUDA/GPU</span>
+                    <span class="tech-badge">Scikit-learn</span>
+                    <span class="tech-badge">Pandas</span>
+                    <span class="tech-badge">Matplotlib</span>
+                </div>
+            </div>
+
+            <!-- DEFIS RENCONTRES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-red-500 pb-2">Défis Rencontrés</h2>
+                
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🎯 Qualité des Données Inégale</h3>
+                    <p class="text-gray-700">
+                        Certains datasets présentaient trop de bonnes performances sur les deux modèles, 
+                        rendant la distillation peu pertinente. D'autres avaient des données manquantes ou mal labellisées.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">⚖️ Déséquilibre de Classes</h3>
+                    <p class="text-gray-700">
+                        Distributions de classes fortement déséquilibrées causant des biais lors de l'entraînement. 
+                        Nécessité de sous/sur-échantillonnage.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🔧 Tuning des Hyperparamètres</h3>
+                    <p class="text-gray-700">
+                        Alpha (poids KD vs labels réels) et température (softness des soft targets) difficiles à équilibrer. 
+                        Nombreuses itérations expérimentales requises.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">⏱️ Temps de Calcul</h3>
+                    <p class="text-gray-700">
+                        Entraînement long, nécessité de GPU, early stopping critique pour éviter l'overfitting et optimiser les ressources.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SOLUTIONS ET APPRENTISSAGES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-green-500 pb-2">Solutions Apportées & Apprentissages</h2>
+                
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Préprocessing Rigoureux</h3>
+                    <p class="text-gray-700 mb-3">
+                        Développement de classes Python spécifiques pour chaque dataset, tokenization standardisée, 
+                        analyse des distributions et rééquilibrage via stratégie de sampling adaptée.
+                    </p>
+                    <p class="text-sm text-gray-600"><strong>Résultat:</strong> CodeBERT à 81% et TinyBERT à 63% sur données nettoyées</p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Fine-tuning Optimisé</h3>
+                    <p class="text-gray-700 mb-3">
+                        Ajustement systématique des hyperparamètres (learning rate, batch size, nombre de couches à geler), 
+                        utilisation d'early stopping et monitoring hebdomadaire des résultats.
+                    </p>
+                    <p class="text-sm text-gray-600"><strong>Résultat:</strong> CodeBERT 90%, TinyBERT 72% après fine-tuning</p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Knowledge Distillation Multi-Round</h3>
+                    <p class="text-gray-700 mb-3">
+                        Implémentation de distillation response-based avec combinaison de loss (KD loss + CE loss), 
+                        grille d'expérimentation alpha/température, et cycles itératifs pour amélioration progressive.
+                    </p>
+                    <p class="text-sm text-gray-600"><strong>Résultat:</strong> TinyBERT 44% → 60%+ sur 10 rounds</p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Expérimentation Systématique</h3>
+                    <p class="text-gray-700 mb-3">
+                        Scripts Python automatisant les boucles d'expérimentation, documentation des configurations, 
+                        visualisations de courbes de loss et matrices de confusion.
+                    </p>
+                    <p class="text-sm text-gray-600"><strong>Compétence:</strong> Démarche scientifique rigoureuse en ML</p>
+                </div>
+            </div>
+
+            <!-- RESULTATS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-purple-500 pb-2">Résultats & Métriques</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-box">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Semaines de stage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">80%+</div>
+                        <div class="stat-label">Précision CodeBERT</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">60%+</div>
+                        <div class="stat-label">Amélioration TinyBERT</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">4x</div>
+                        <div class="stat-label">Modèle plus léger</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE SNIPPETS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-purple-500 pb-2">Extraits de Code</h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Knowledge Distillation Loss</h3>
+                    <div class="code-snippet">
+<pre>def compute_distillation_loss(student_logits, teacher_logits, labels, 
+                               alpha=0.7, temperature=4.0):
+    # KD Loss: soft targets from teacher
+    teacher_probs = F.softmax(teacher_logits / temperature, dim=-1)
+    kd_loss = F.kl_div(
+        F.log_softmax(student_logits / temperature, dim=-1),
+        teacher_probs,
+        reduction='batchmean'
+    ) * (temperature ** 2)
+    
+    # CE Loss: hard targets (ground truth)
+    ce_loss = F.cross_entropy(student_logits, labels)
+    
+    # Combined loss
+    total_loss = alpha * kd_loss + (1 - alpha) * ce_loss
+    return total_loss</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Multi-Round Distillation Loop</h3>
+                    <div class="code-snippet">
+<pre>def multi_round_distillation(teacher_model, student_model, 
+                              train_loader, num_rounds=10):
+    results = []
+    
+    for round_num in range(num_rounds):
+        optimizer = AdamW(student_model.parameters(), lr=2e-5)
+        
+        for batch in train_loader:
+            student_logits = student_model(batch['input_ids'])
+            teacher_logits = teacher_model(batch['input_ids'])
+            
+            loss = compute_distillation_loss(
+                student_logits, teacher_logits, batch['labels'],
+                alpha=0.7, temperature=4.0
+            )
+            loss.backward()
+            optimizer.step()
+        
+        # Evaluate
+        acc = evaluate(student_model, val_loader)
+        results.append(acc)
+        print(f"Round {round_num + 1}: Accuracy = {acc:.4f}")
+    
+    return results</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Dataset avec Tokenization</h3>
+                    <div class="code-snippet">
+<pre>class VulnerabilityDataset(Dataset):
+    def __init__(self, data, tokenizer, max_length=512):
+        self.data = data
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+    
+    def __len__(self):
+        return len(self.data)
+    
+    def __getitem__(self, idx):
+        code = self.data[idx]['code']
+        label = self.data[idx]['label']
+        
+        encoding = self.tokenizer(
+            code,
+            max_length=self.max_length,
+            truncation=True,
+            padding='max_length',
+            return_tensors='pt'
+        )
+        
+        return {
+            'input_ids': encoding['input_ids'].squeeze(),
+            'attention_mask': encoding['attention_mask'].squeeze(),
+            'labels': torch.tensor(label, dtype=torch.long)
+        }</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-purple-500 pb-2">Stack Technologique</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🐍</div>
+                        <h3 class="font-bold">Python 3</h3>
+                        <p class="text-sm text-gray-600">Langage principal</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">⚡</div>
+                        <h3 class="font-bold">PyTorch</h3>
+                        <p class="text-sm text-gray-600">Deep Learning Framework</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🤗</div>
+                        <h3 class="font-bold">HuggingFace</h3>
+                        <p class="text-sm text-gray-600">Transformers & Models</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📊</div>
+                        <h3 class="font-bold">Pandas</h3>
+                        <p class="text-sm text-gray-600">Data Manipulation</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🎨</div>
+                        <h3 class="font-bold">Matplotlib</h3>
+                        <p class="text-sm text-gray-600">Visualisation</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🖥️</div>
+                        <h3 class="font-bold">CUDA/GPU</h3>
+                        <p class="text-sm text-gray-600">Accélération</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY LEARNINGS -->
+            <div class="mb-16 p-8 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+                <h2 class="text-3xl font-bold mb-6">🎓 Points Clés Appris</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-purple-500 font-bold mr-3">→</span>
+                        <span>Les données sont le fondement du ML : qualité >> quantité</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-500 font-bold mr-3">→</span>
+                        <span>Knowledge distillation permet une compression 4x avec perte mineure (~5%)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-500 font-bold mr-3">→</span>
+                        <span>L'expérimentation systématique (grille d'hyperparamètres) est cruciale</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-500 font-bold mr-3">→</span>
+                        <span>Early stopping et monitoring régulier évitent overfitting et économisent du temps</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-500 font-bold mr-3">→</span>
+                        <span>Fine-tuning efficace requiert ajustement empirique, pas "one size fits all"</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Intéressé par ce projet ?</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Consultez le code complet et les résultats détaillés sur GitHub.</p>
+            <a href="#" class="px-8 py-3 bg-purple-600 text-white font-semibold rounded hover:bg-purple-700 transition">
+                Voir le Projet Complet
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer slanted-footer">
+        <a href="#top" class="smoothscroll scroll-top">
+            <span class="icon-keyboard_arrow_up"></span>
+        </a>
+        <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
+            <h3>Mes réseaux</h3>
+            <div class="footer-social" style="display: flex; gap: 10px;">
+                <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
+                <a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span></a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12">
+                <p class="copyright">
+                    <small class="block">Made by Yahia</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

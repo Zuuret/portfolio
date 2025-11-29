@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Minishell - Projet Personnel</title>
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #fff3f5;
+            border-left: 3px solid #f5576c;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .challenge-card {
+            border-left: 4px solid #ef5350;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .solution-card {
+            border-left: 4px solid #66bb6a;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            border-radius: 8px;
+            margin: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f5576c;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Chargement...</span>
+    </div>
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                       <li><a href="about.html">Qui suis-je ?</a></li>
+                        <li><a href="blog.html">Formation</a></li>
+                        <li><a href="projets.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+                    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-gradient text-white py-20" id="hero">
+        <div class="container mx-auto px-4">
+            <div class="py-20">
+                <h1 class="text-5xl font-bold mb-4" style="color: rgb(255, 255, 255);">Minishell</h1>
+                <p class="text-xl opacity-90 mb-8 max-w-2xl">Recréation d'un shell UNIX complet - Projet personnel</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="px-6 py-3 bg-white text-pink-600 font-semibold rounded hover:shadow-lg transition">
+                        Voir sur GitHub
+                    </a>
+                    <a href="#details" class="px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:bg-opacity-10 transition">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section class="py-16 bg-gray-50" id="resume">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h2 class="text-3xl font-bold mb-6">Résumé du Projet</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    <strong>Minishell</strong> est un projet personnel de recréation d'un shell UNIX fonctionnel en C pur. 
+                    L'objectif : implémenter un interpréteur de commandes compliant avec les standards POSIX, 
+                    capable de parser, exécuter et gérer les processus.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Ce projet maitrise les concepts bas niveau essentiels : <strong>fork/exec</strong>, 
+                    <strong>gestion des signaux</strong>, <strong>redirections</strong>, <strong>pipes</strong>, 
+                    et <strong>parsing robuste</strong> avec architecture modulaire.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section class="py-16" id="details">
+        <div class="container mx-auto px-4">
+            
+            <!-- OBJECTIFS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-pink-500 pb-2">Objectifs du Projet</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Parser Robuste</h3>
+                        <p class="text-gray-700">Analyser correctement commandes, arguments, quotes et échappements</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Exécution de Commandes</h3>
+                        <p class="text-gray-700">Utiliser fork/execve pour lancer des processus enfants indépendants</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Pipes et Redirections</h3>
+                        <p class="text-gray-700">Implémenter >, >>, <, | pour rediriger I/O et chaîner commandes</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Gestion des Signaux</h3>
+                        <p class="text-gray-700">Traiter SIGINT (Ctrl+C), SIGQUIT (Ctrl+\) et signaux enfants</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Gestion d'Environnement</h3>
+                        <p class="text-gray-700">Maintenir et modifier variables d'environnement (cd, export, unset)</p>
+                    </div>
+                    <div class="p-6 bg-red-50 rounded-lg border-l-4 border-red-500">
+                        <h3 class="font-bold text-red-900 mb-2">Code Qualité</h3>
+                        <p class="text-gray-700">Code conforme aux normes strictes (max 25 lignes, no goto, etc.)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPETENCES TECHNIQUES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-pink-500 pb-2">Compétences Techniques</h2>
+                <div class="flex flex-wrap">
+                    <span class="tech-badge">C</span>
+                    <span class="tech-badge">POSIX</span>
+                    <span class="tech-badge">fork/execve</span>
+                    <span class="tech-badge">Signaux</span>
+                    <span class="tech-badge">Pipes</span>
+                    <span class="tech-badge">Redirections</span>
+                    <span class="tech-badge">Parsing</span>
+                    <span class="tech-badge">Gestion mémoire</span>
+                    <span class="tech-badge">Environment</span>
+                    <span class="tech-badge">Code Modulaire</span>
+                </div>
+            </div>
+
+            <!-- DEFIS RENCONTRES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-red-500 pb-2">Défis Rencontrés</h2>
+                
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🔄 Parsing de Shell</h3>
+                    <p class="text-gray-700">
+                        Gérer correctement les quotes simples/doubles, les échappements, les espaces, 
+                        et les délimiteurs. Un parser faible = comportement imprévisible.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">⚡ Gestion des Signaux</h3>
+                    <p class="text-gray-700">
+                        Ctrl+C doit ne tuer que l'enfant, pas le shell. Ctrl+\ doit générer un core dump. 
+                        Signaux asynchrones compliqués à gérer proprement.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">🔗 Chaînage de Pipes</h3>
+                    <p class="text-gray-700">
+                        Multiples pipes (cmd1 | cmd2 | cmd3) nécessitent gestion précise des file descriptors 
+                        et synchronisation parent-enfants pour éviter deadlocks.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">💾 Fuite Mémoire</h3>
+                    <p class="text-gray-700">
+                        Chaque process créé consomme mémoire. Avec redirections et pipes multiples, 
+                        risk de fuites si allocation/libération non parfaite.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Architecture Modulaire</h3>
+                    <p class="text-gray-700">
+                        Limitations : fonctions 25 lignes max, pas de goto, pas de switch, structure immuable. 
+                        Requiert refactoring régulier pour rester compliant.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SOLUTIONS ET APPRENTISSAGES -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-green-500 pb-2">Solutions Apportées & Apprentissages</h2>
+                
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Parser Tokenizer</h3>
+                    <p class="text-gray-700 mb-3">
+                        Implémentation d'un parser tokenizer qui split sur espaces, gère quotes et construit 
+                        liste d'arguments. Utilise automate d'état pour tracking quotes.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Gestionnaire de Pipes</h3>
+                    <p class="text-gray-700 mb-3">
+                        Boucle fork/exec pour chaque commande, gestion méthodique des descripteurs de fichier 
+                        pour éviter deadlocks et assurer communication correcte.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Gestion des Signaux</h3>
+                    <p class="text-gray-700 mb-3">
+                        Handler SIGINT/SIGQUIT qui affecte que le foreground group. Signal SIGCHLD pour 
+                        récupérer status des enfants sans bloquer le shell.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Built-ins Essentiels</h3>
+                    <p class="text-gray-700 mb-3">
+                        cd, exit, echo, export, unset, env implémentés directement (pas d'execve). 
+                        Permet manipulation d'environnement sans subprocess.
+                    </p>
+                </div>
+
+                <div class="solution-card">
+                    <h3 class="font-bold text-lg mb-2">✅ Ressources Bas Niveau</h3>
+                    <p class="text-gray-700 mb-3">
+                        Maîtrise de fork, execve, dup2, pipe, open/close. Gestion minutieuse des 
+                        ressources (close des descriptors inutiles immédiatement).
+                    </p>
+                </div>
+            </div>
+
+            <!-- CODE SNIPPETS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-pink-500 pb-2">Extraits de Code</h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Exécution avec Pipe</h3>
+                    <div class="code-snippet">
+<pre>void execute_pipe(t_command *cmd1, t_command *cmd2)
+{
+    int pipefd[2];
+    pid_t pid1, pid2;
+    
+    if (pipe(pipefd) == -1)
+        exit_error("pipe failed");
+    
+    pid1 = fork();
+    if (pid1 == 0)
+    {
+        dup2(pipefd[1], STDOUT_FILENO);
+        close(pipefd[0]);
+        close(pipefd[1]);
+        execute_command(cmd1);
+        exit(EXIT_FAILURE);
+    }
+    
+    pid2 = fork();
+    if (pid2 == 0)
+    {
+        dup2(pipefd[0], STDIN_FILENO);
+        close(pipefd[0]);
+        close(pipefd[1]);
+        execute_command(cmd2);
+        exit(EXIT_FAILURE);
+    }
+    
+    close(pipefd[0]);
+    close(pipefd[1]);
+    waitpid(pid1, NULL, 0);
+    waitpid(pid2, NULL, 0);
+}</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Parsing Tokenizer</h3>
+                    <div class="code-snippet">
+<pre>t_token *tokenize(char *input)
+{
+    t_token *tokens;
+    int i;
+    int j;
+    char in_quote;
+    
+    tokens = malloc(sizeof(t_token) * (ft_strlen(input) + 1));
+    i = 0;
+    j = 0;
+    in_quote = 0;
+    
+    while (input[i])
+    {
+        if ((input[i] == '\'' || input[i] == '\"') && !in_quote)
+            in_quote = input[i++];
+        else if (input[i] == in_quote)
+        {
+            in_quote = 0;
+            i++;
+        }
+        else if (input[i] == ' ' && !in_quote)
+        {
+            tokens[j++].type = TOKEN_SPACE;
+            i++;
+        }
+        else
+        {
+            tokens[j++].type = TOKEN_ARG;
+            tokens[j].value = extract_arg(&input[i], &in_quote);
+            i += ft_strlen(tokens[j].value);
+        }
+    }
+    tokens[j].type = TOKEN_EOF;
+    return (tokens);
+}</pre>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold mb-4">Handler Signaux</h3>
+                    <div class="code-snippet">
+<pre>void signal_handler(int sig)
+{
+    if (sig == SIGINT)
+    {
+        write(1, "\n", 1);
+        g_shell.exit_code = 130;
+    }
+    else if (sig == SIGQUIT)
+    {
+        write(1, "Quit (core dumped)\n", 19);
+        g_shell.exit_code = 131;
+    }
+    else if (sig == SIGCHLD)
+    {
+        while (waitpid(-1, &g_shell.exit_code, WNOHANG) > 0)
+            ;
+    }
+}
+
+int main(void)
+{
+    signal(SIGINT, signal_handler);
+    signal(SIGQUIT, signal_handler);
+    signal(SIGCHLD, signal_handler);
+    // ... shell loop
+}</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTATS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-pink-500 pb-2">Résultats & Métriques</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Fonctionnalités</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Fonctionnalités</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">5K</div>
+                        <div class="stat-label">Lignes de C</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Leaks mémoire</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-pink-500 pb-2">Stack Technologique</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🔤</div>
+                        <h3 class="font-bold">C Pure</h3>
+                        <p class="text-sm text-gray-600">Pas de librairie système</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🔧</div>
+                        <h3 class="font-bold">fork/execve</h3>
+                        <p class="text-sm text-gray-600">Gestion de processus</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📡</div>
+                        <h3 class="font-bold">Signaux POSIX</h3>
+                        <p class="text-sm text-gray-600">Gestion des interruptions</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">🔗</div>
+                        <h3 class="font-bold">Pipes & IPC</h3>
+                        <p class="text-sm text-gray-600">Communication inter-process</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">💾</div>
+                        <h3 class="font-bold">Gestion Mémoire</h3>
+                        <p class="text-sm text-gray-600">malloc/free rigoureux</p>
+                    </div>
+                    <div class="p-6 border rounded-lg text-center hover:shadow-lg transition">
+                        <div class="text-4xl mb-2">📏</div>
+                        <h3 class="font-bold">C POSIX</h3>
+                        <p class="text-sm text-gray-600">Contraintes strictes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KEY LEARNINGS -->
+            <div class="mb-16 p-8 bg-gradient-to-r from-pink-50 to-red-50 rounded-lg">
+                <h2 class="text-3xl font-bold mb-6">🎓 Points Clés Appris</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-pink-500 font-bold mr-3">→</span>
+                        <span>fork/exec sont les briques fondamentales de l'exécution UNIX</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-pink-500 font-bold mr-3">→</span>
+                        <span>Gestion des descriptors de fichiers est critique pour pipes et redirections</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-pink-500 font-bold mr-3">→</span>
+                        <span>Signaux asynchrones nécessitent une architecture de événements robuste</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-pink-500 font-bold mr-3">→</span>
+                        <span>Parser tokenizer doit gérer tous les cas limites (quotes, espaces, etc.)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-pink-500 font-bold mr-3">→</span>
+                        <span>Respect de norme stricte force architecture modulaire et code clean</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Intéressé par ce projet ?</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Explorez le code source complet sur GitHub et testez le shell!</p>
+            <a href="#" class="px-8 py-3 bg-pink-600 text-white font-semibold rounded hover:bg-pink-700 transition">
+                Voir sur GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer slanted-footer">
+        <a href="#top" class="smoothscroll scroll-top">
+            <span class="icon-keyboard_arrow_up"></span>
+        </a>
+        <div class="col-6 col-md-3 mb-4 mb-md-0" style="margin-left: auto;">
+            <h3>Mes réseaux</h3>
+            <div class="footer-social" style="display: flex; gap: 10px;">
+                <a href="https://www.linkedin.com/in/yahia-k-093397341/"><span class="icon-linkedin"></span></a>
+                <a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span></a>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-12">
+                <p class="copyright">
+                    <small class="block">Made by Yahia</small>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Creepy Night - Plateforme Événementielle Vue.js</title>
+    
+    <link rel="stylesheet" href="css/custom-bs.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/line-icons/style.css">
+    
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .tech-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f5f7fa;
+            border-left: 3px solid #0066cc;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .challenge-card {
+            border-left: 4px solid #ef5350;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-card {
+            border-left: 4px solid #66bb6a;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-snippet {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #0066cc;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Chargement...</span>
+    </div>
+</div>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="site-logo col-6"><a href="index.html">Yahia</a></div>
+                <nav class="mx-auto site-navigation">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                        <li><a href="index.html" class="nav-link">Accueil</a></li>
+                        <li><a href="about.html">Qui suis-je ?</a></li>
+                        <li><a href="skills.html">Compétences</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="blog.html">Formation</a></li>
+                        <li><a href="contact-form.html">Contact</a></li>
+                        <li><a href="CV.txt" download class="nav-link" style="color: #0066cc;">CV</a></li>
+                    </ul>
+                </nav>
+                <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+                    <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="home-section section-hero overlay slanted" style="background-color: #0066cc;" id="hero">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1>Creepy Night</h1>
+                    <div class="mx-auto w-75">
+                        <p>Plateforme événementielle complète - Projet personnel en équipe de 5</p>
+                    </div>
+                    <p class="mt-5">
+                        <a href="#details" class="btn btn-outline-white btn-md smoothscroll">Détails du projet</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a href="#resume" class="scroll-button smoothscroll">
+            <span class="icon-keyboard_arrow_down"></span>
+        </a>
+    </section>
+
+    <!-- DESCRIPTION & MAIN CONTENT -->
+    <section class="site-section" id="details">
+        <div class="container">
+            <!-- OBJECTIF -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <h3 class="section-title-sub text-primary">Projet Personnel</h3>
+                    <h2 class="section-title mb-4">Objectif du Projet</h2>
+                    <p class="mb-3">
+                        Plateforme web complète pour créer, découvrir et réserver des événements thématiques "Creepy Night". 
+                        Full-stack avec front-end moderne (Vue.js), back-end REST API (Node.js/Express), authentification JWT et système de réservation avancé.
+                    </p>
+                    <p>
+                        Projet réalisé en équipe de 5 personnes. Complexité majeure : coordination de développement parallèle 
+                        sans écrasement de travail ou dépendances circulaires. Communication et organisation critiques.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TECHNOLOGIES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h3 class="section-title-sub text-primary">Stack</h3>
+                    <h2 class="section-title mb-4">Technologies Utilisées</h2>
+                    <div class="block__16443 mb-4">
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">JWT</span>
+                        <span class="tech-badge">Stripe</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">Axios</span>
+                        <span class="tech-badge">REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FONCTIONNALITES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Fonctionnalités Principales</h2>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Authentification JWT</h3>
+                        <p>Inscription/connexion sécurisée, tokens, refresh tokens</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Événements CRUD Complet</h3>
+                        <p>Créer, lister, filtrer, modifier événements avec photos</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Système de Réservation</h3>
+                        <p>Vérification places disponibles, annulation, historique</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Intégration Paiement</h3>
+                        <p>Stripe pour transactions sécurisées</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Profil Utilisateur</h3>
+                        <p>Modification infos, historique réservations, favoris</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="block__16443">
+                        <h3>Dashboard Organisateur</h3>
+                        <p>Statistiques, gestion réservations, modération</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEFIS ET SOLUTIONS -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-bold mb-8 border-b-4 border-red-500 pb-2">Défis Rencontrés et Solutions</h2>
+                
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Défi : Coordination Équipe 5 Personnes</h3>
+                    <p class="text-gray-700 mb-3">
+                        Projet compliqué car il fallait bien faire en sorte de ne pas se marcher dessus. Chacun travaille sur 
+                        features différentes (auth, événements, réservations, paiement, profil) mais tout dépend de l'API commune 
+                        et du schéma MongoDB. Risque : conflits Git massifs, API instable, dépendances cassées.
+                    </p>
+                    <p class="text-gray-700 text-sm font-semibold">
+                        Solution : Définir API contracts très tôt, utiliser feature branches strictes, code reviews obligatoires, 
+                        réunions quotidiennes pour clarifier dépendances, mergeur unique pour éviter conflits, tests d'intégration 
+                        systématiques.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Défi : Synchronisation Données en Temps Réel</h3>
+                    <p class="text-gray-700 mb-3">
+                        Places disponibles se réduisent pendant réservation. Race condition : deux clients réservent dernière place, 
+                        ou l'un voit nombre périmé. Pas acceptable en production.
+                    </p>
+                    <p class="text-gray-700 text-sm font-semibold">
+                        Solution : Transactions MongoDB, verrous, vérification final juste avant commit paiement, 
+                        notification WebSocket pour mise à jour live du nombre places.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Défi : Intégration Stripe Complexe</h3>
+                    <p class="text-gray-700 mb-3">
+                        Gestion webhook, idempotence (client retry), conciliation paiement avec réservation, fallback si paiement échoue.
+                    </p>
+                    <p class="text-gray-700 text-sm font-semibold">
+                        Solution : Idempotency keys, status machine (pending -> paid -> confirmed), webhook validation, 
+                        reconciliation job périodique.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Défi : Frontend Vue.js Performant</h3>
+                    <p class="text-gray-700 mb-3">
+                        Liste 10+ événements, filtrage, pagination, lazy-loading images, infinite scroll. Si mal conçu : lag.
+                    </p>
+                    <p class="text-gray-700 text-sm font-semibold">
+                        Solution : Virtualisation liste, lazy-loading images, pagination côté serveur, caching local, debounce filtres.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <h3 class="font-bold text-lg mb-2">Défi : Travail Régulier d'Équipe</h3>
+                    <p class="text-gray-700 mb-3">
+                        5 personnes, agenda chaotique, difficulté de coordonner sessions pair-programming ou code reviews.
+                    </p>
+                    <p class="text-gray-700 text-sm font-semibold">
+                        Solution : Calendar partagé, plan sprintés (2 semaines), objectifs clairs par sprint, démo hebdo, 
+                        documentation hebdomadaire.
+                    </p>
+                </div>
+            </div>
+
+            <!-- MON ROLE -->
+            <div class="mb-16 p-8 bg-gradient-to-r from-pink-50 to-yellow-50 rounded-lg">
+                <h2 class="text-3xl font-bold mb-6">Mon Rôle</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Projet réalisé en équipe de 5 personnes. Travail d'équipe régulier et bien organisé était essentiel.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Mes responsabilités principales :
+                </p>
+                <ul class="space-y-2 text-gray-700">
+                    <li>• Conception générale système et architecture</li>
+                    <li>• Développement back-end : authentification JWT, routes utilisateur</li>
+                    <li>• Conception schéma MongoDB et migrations</li>
+                    <li>• Intégration API Stripe paiements</li>
+                    <li>• Code reviews et gestion branches Git</li>
+                    <li>• Déploiement et CI/CD</li>
+                </ul>
+            <!-- DEFIS ET SOLUTIONS -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Défis Rencontrés et Solutions</h2>
+                </div>
+                <div class="col-12">
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Coordination Équipe 5 Personnes</h3>
+                        <p class="mb-3">
+                            Projet compliqué car il fallait bien faire en sorte de ne pas se marcher dessus. Chacun travaille sur 
+                            features différentes (auth, événements, réservations, paiement, profil) mais tout dépend de l'API commune 
+                            et du schéma MongoDB. Risque : conflits Git massifs, API instable, dépendances cassées.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Définir API contracts très tôt, utiliser feature branches strictes, code reviews obligatoires, 
+                            réunions quotidiennes pour clarifier dépendances, mergeur unique pour éviter conflits, tests d'intégration 
+                            systématiques.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Synchronisation Données en Temps Réel</h3>
+                        <p class="mb-3">
+                            Places disponibles se réduisent pendant réservation. Race condition : deux clients réservent dernière place, 
+                            ou l'un voit nombre périmé. Pas acceptable en production.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Transactions MongoDB, verrous, vérification final juste avant commit paiement, 
+                            notification WebSocket pour mise à jour live du nombre places.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Intégration Stripe Complexe</h3>
+                        <p class="mb-3">
+                            Gestion webhook, idempotence (client retry), conciliation paiement avec réservation, fallback si paiement échoue.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Idempotency keys, status machine (pending -> paid -> confirmed), webhook validation, 
+                            reconciliation job périodique.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Frontend Vue.js Performant</h3>
+                        <p class="mb-3">
+                            Liste 10+ événements, filtrage, pagination, lazy-loading images, infinite scroll. Si mal conçu : lag.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Virtualisation liste, lazy-loading images, pagination côté serveur, caching local, debounce filtres.
+                        </p>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h3 class="font-bold text-lg mb-2">Défi : Travail Régulier d'Équipe</h3>
+                        <p class="mb-3">
+                            5 personnes, agenda chaotique, difficulté de coordonner sessions pair-programming ou code reviews.
+                        </p>
+                        <p class="text-sm font-semibold">
+                            Solution : Calendar partagé, plan sprintés (2 semaines), objectifs clairs par sprint, démo hebdo, 
+                            documentation hebdomadaire.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MON ROLE -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div style="padding: 2rem; background: #f0f5ff; border-radius: 8px; border-left: 4px solid #0066cc;">
+                        <h2 class="section-title mb-4">Mon Rôle</h2>
+                        <p class="mb-3">
+                            Projet réalisé en équipe de 5 personnes. Travail d'équipe régulier et bien organisé était essentiel.
+                        </p>
+                        <p class="mb-3">
+                            Mes responsabilités principales :
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-2">• Conception générale système et architecture</li>
+                            <li class="mb-2">• Développement back-end : authentification JWT, routes utilisateur</li>
+                            <li class="mb-2">• Conception schéma MongoDB et migrations</li>
+                            <li class="mb-2">• Intégration API Stripe paiements</li>
+                            <li class="mb-2">• Code reviews et gestion branches Git</li>
+                            <li>• Déploiement et CI/CD</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTATS -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Résultats et Métriques</h2>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Membres équipe</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">15K</div>
+                        <div class="stat-label">Lignes code total</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Features complètes</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-box">
+                        <div class="stat-number">22</div>
+                        <div class="stat-label">Semaines projet</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVOLUTIONS POSSIBLES -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div style="padding: 2rem; background: #f9f9f9; border-radius: 8px;">
+                        <h2 class="section-title mb-4">Évolutions Possibles</h2>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-2">• Notifications real-time via WebSocket/Socket.io</li>
+                            <li class="mb-2">• Système de recommandations ML</li>
+                            <li class="mb-2">• Application mobile React Native</li>
+                            <li class="mb-2">• Analytics avancées et dashboard administrateur</li>
+                            <li>• Système de reviews et ratings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE SNIPPET -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <h2 class="section-title mb-4">Extrait de Code</h2>
+                    <div class="code-snippet">
+<pre>// Réservation d'un événement avec vérification atomique
+router.post('/reservations', authenticate, async (req, res) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    
+    try {
+        const event = await Event.findById(req.body.eventId).session(session);
+        if (!event || event.spots_available <= 0) {
+            throw new Error('No spots available');
+        }
+        
+        // Décrémenter les places et créer réservation
+        event.spots_available -= 1;
+        await event.save({ session });
+        
+        const reservation = await Reservation.create([{
+            user_id: req.user.id,
+            event_id: event._id,
+            status: 'pending'
+        }], { session });
+        
+        await session.commitTransaction();
+        res.json(reservation[0]);
+        
+    } catch (err) {
+        await session.abortTransaction();
+        res.status(400).json({ error: err.message });
+    } finally {
+        session.endSession();
+    }
+});</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="home-section cta-section overlay" id="cta-section" style="background-color: #0066cc;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h2 class="section-title" style="color: white;">Voir le projet complet</h2>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Consultez le code source sur GitHub.</p>
+                    <p>
+                        <a href="https://github.com/Zuuret/SAE-S3-S4_Creepy_Night" class="btn btn-white btn-md" target="_blank">Code sur GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h3>À propos</h3>
+                            <p>Je suis Yahia, développeur passionné par le code et l'innovation. Toujours en apprentissage continu.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Navigation</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="index.html">Accueil</a></li>
+                                <li><a href="about.html">Qui suis-je ?</a></li>
+                                <li><a href="skills.html">Compétences</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Réseaux</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.linkedin.com/in/yahia-k-093397341/" target="_blank"><span class="icon-linkedin"></span> LinkedIn</a></li>
+                                <li><a href="https://github.com/Zuuret" target="_blank"><span class="icon-github"></span> GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-md-right">
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/yahia-k-093397341/" class="pl-0 pr-3"><span class="icon-linkedin"></span></a>
+                        <a href="https://github.com/Zuuret" class="pl-3 pr-3"><span class="icon-github"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-7 text-center">
+                    <p class="copyright">
+                        <small>Made by Yahia © 2025</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/stickyfill.min.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
