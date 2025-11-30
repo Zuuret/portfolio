@@ -161,16 +161,20 @@
                 <div class="col-12">
                     <h3 class="section-title-sub text-primary">Stack</h3>
                     <h2 class="section-title mb-4">Technologies Utilisées</h2>
-                    <div class="block__16443 mb-4">
-                        <span class="tech-badge">C++98</span>
-                        <span class="tech-badge">Sockets BSD</span>
-                        <span class="tech-badge">poll()</span>
-                        <span class="tech-badge">HTTP/1.1</span>
-                        <span class="tech-badge">CGI (fork/exec)</span>
-                        <span class="tech-badge">Configuration nginx-style</span>
-                        <span class="tech-badge">File I/O</span>
-                        <span class="tech-badge">Parsing</span>
-                        <span class="tech-badge">Networking</span>
+                </div>
+                <div class="col-12">
+                    <div class="block__16443">
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span class="tech-badge">C++98</span>
+                            <span class="tech-badge">Sockets BSD</span>
+                            <span class="tech-badge">HTTP/1.1</span>
+                            <span class="tech-badge">poll() Multiplexing</span>
+                            <span class="tech-badge">Parsing HTTP</span>
+                            <span class="tech-badge">CGI</span>
+                            <span class="tech-badge">nginx-style Config</span>
+                            <span class="tech-badge">Non-blocking I/O</span>
+                            <span class="tech-badge">File I/O</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,6 +221,29 @@
                     </div>
                 </div>
             </div>
+            <!-- MON ROLE -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div style="padding: 2rem; background: #f0f5ff; border-radius: 8px; border-left: 4px solid #0066cc;">
+                        <h2 class="section-title mb-4">Mon Rôle</h2>
+                        <p class="mb-3">
+                            Projet réalisé en équipe de 2 personnes avec forte coordination requise.
+                        </p>
+                        <p class="mb-3">
+                            Responsabilités principales :
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li class="mb-2">• Architecture générale et design des classes</li>
+                            <li class="mb-2">• Implémentation de Server et gestion poll()</li>
+                            <li class="mb-2">• Parser HTTP et Request/Response</li>
+                            <li class="mb-2">• Gestion CGI et exécution de scripts</li>
+                            <li class="mb-2">• Configuration et routage</li>
+                            <li>• Tests et debugging du système intégré</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
 
             <!-- DEFIS ET SOLUTIONS -->
             <div class="row mb-3 pt-3">
@@ -270,28 +297,7 @@
                 </div>
             </div>
 
-            <!-- MON ROLE -->
-            <div class="row mb-3 pt-3">
-                <div class="col-12">
-                    <div style="padding: 2rem; background: #f0f5ff; border-radius: 8px; border-left: 4px solid #0066cc;">
-                        <h2 class="section-title mb-4">Mon Rôle</h2>
-                        <p class="mb-3">
-                            Projet réalisé en équipe de 2 personnes avec forte coordination requise.
-                        </p>
-                        <p class="mb-3">
-                            Responsabilités principales :
-                        </p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li class="mb-2">• Architecture générale et design des classes</li>
-                            <li class="mb-2">• Implémentation de Server et gestion poll()</li>
-                            <li class="mb-2">• Parser HTTP et Request/Response</li>
-                            <li class="mb-2">• Gestion CGI et exécution de scripts</li>
-                            <li class="mb-2">• Configuration et routage</li>
-                            <li>• Tests et debugging du système intégré</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- RESULTATS -->
             <div class="row mb-3 pt-3">
@@ -345,7 +351,7 @@
                 <div class="col-12">
                     <h2 class="section-title mb-4">Extrait de Code</h2>
                     <div class="code-snippet">
-<pre>void Server::run()
+<pre style="color: white">void Server::run()
 {
     std::vector&lt;pollfd&gt; fds;
     
@@ -373,6 +379,69 @@
                     </div>
                 </div>
             </div>
+            <div class="row mb-3 pt-3">
+    <div class="col-12">
+        <h2 class="section-title mb-4">Stack Technologique</h2>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>C++98</h3>
+            <p>Développement du serveur HTTP from scratch en C++98.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Réseau & Sockets</h3>
+            <p>socket, bind, listen, accept, recv, send, close — gestion bas niveau des connexions TCP.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Multiplexage — poll()</h3>
+            <p>Serveur non-bloquant avec gestion efficace de multiples clients simultanés.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Parser HTTP</h3>
+            <p>Implémentation du parsing des requêtes HTTP/1.1 : headers, body, chunked, méthodes.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Génération de Réponses HTTP</h3>
+            <p>Gestion des status codes, routes, autoindex, fichiers statiques, MIME-types.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>CGI (FastCGI-like)</h3>
+            <p>Exécution de scripts externes (PHP, Python) avec gestion des variables d’environnement.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Parser de Configuration</h3>
+            <p>Support du fichier de config type nginx : serveur, location, ports, méthodes, index.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Gestion des Sessions Client</h3>
+            <p>Structure Client avec tracking de l’état de la connexion et du traitement de la requête.</p>
+        </div>
+    </div>
+</div>
+</section>
+
 
         </div>
     </section>
@@ -385,7 +454,7 @@
                     <h2 class="section-title" style="color: white;">Voir le projet complet</h2>
                     <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Consultez le code source sur GitHub.</p>
                     <p>
-                        <a href="https://github.com/Zuuret/webserv" class="btn btn-white btn-md" target="_blank">Code sur GitHub</a>
+                        <a href="javascript:void(0)" class="btn btn-white btn-md">Code non disponible.</a>
                     </p>
                 </div>
             </div>
@@ -408,6 +477,9 @@
                                 <li><a href="index.html">Accueil</a></li>
                                 <li><a href="about.html">Qui suis-je ?</a></li>
                                 <li><a href="skills.html">Compétences</a></li>
+                                <li><a href="projets.html">Projets</a></li>
+                                <li><a href="blog.html">Formation</a></li>
+                                <li><a href="contact-form.html">Contact</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">

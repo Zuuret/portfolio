@@ -160,16 +160,20 @@
                 <div class="col-12">
                     <h3 class="section-title-sub text-primary">Stack</h3>
                     <h2 class="section-title mb-4">Technologies Utilisées</h2>
-                    <div class="block__16443 mb-4">
-                        <span class="tech-badge">C</span>
-                        <span class="tech-badge">POSIX Threads</span>
-                        <span class="tech-badge">fork/execve</span>
-                        <span class="tech-badge">Signaux (SIGINT, SIGQUIT)</span>
-                        <span class="tech-badge">Pipes</span>
-                        <span class="tech-badge">Redirections I/O</span>
-                        <span class="tech-badge">GDB</span>
-                        <span class="tech-badge">Valgrind</span>
-                        <span class="tech-badge">Git (collaboration)</span>
+                </div>
+                <div class="col-12">
+                    <div class="block__16443">
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <span class="tech-badge">C</span>
+                            <span class="tech-badge">Pipes & Redirections</span>
+                            <span class="tech-badge">fork/execve</span>
+                            <span class="tech-badge">Signaux</span>
+                            <span class="tech-badge">Architecture système</span>
+                            <span class="tech-badge">Parsing & Tokenization</span>
+                            <span class="tech-badge">GDB</span>
+                            <span class="tech-badge">Valgrind</span>
+                            <span class="tech-badge">Git</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,6 +217,26 @@
                     <div class="block__16443">
                         <h3>Gestion d'Environnement</h3>
                         <p>Maintien et modification des variables d'environnement</p>
+                    </div>
+                </div>
+            </div>
+            <!-- MON ROLE -->
+            <div class="row mb-3 pt-3">
+                <div class="col-12">
+                    <div class="block__16443 p-5" style="background-color: #f0f5ff; border-left: 5px solid #0066cc;">
+                        <h3 style="color: #0066cc;" class="mb-4">Mon Rôle</h3>
+                        <p class="mb-3">
+                            Projet réalisé en équipe de 2 personnes avec communication très fréquente.
+                        </p>
+                        <p class="mb-3 font-semibold">Responsabilités principales :</p>
+                        <ul class="list-unstyled">
+                            <li>• Design architecture générale du shell</li>
+                            <li>• Implémentation du parser tokenizer</li>
+                            <li>• Gestion des signaux et processus enfants</li>
+                            <li>• Intégration des built-ins et environnement</li>
+                            <li>• Debugging et tests avec GDB/Valgrind</li>
+                            <li>• Coordination Git et code reviews</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -273,26 +297,7 @@
                 </div>
             </div>
 
-            <!-- MON ROLE -->
-            <div class="row mb-3 pt-3">
-                <div class="col-12">
-                    <div class="block__16443 p-5" style="background-color: #f0f5ff; border-left: 5px solid #0066cc;">
-                        <h3 style="color: #0066cc;" class="mb-4">Mon Rôle</h3>
-                        <p class="mb-3">
-                            Projet réalisé en équipe de 2 personnes avec communication très fréquente.
-                        </p>
-                        <p class="mb-3 font-semibold">Responsabilités principales :</p>
-                        <ul class="list-unstyled">
-                            <li>• Design architecture générale du shell</li>
-                            <li>• Implémentation du parser tokenizer</li>
-                            <li>• Gestion des signaux et processus enfants</li>
-                            <li>• Intégration des built-ins et environnement</li>
-                            <li>• Debugging et tests avec GDB/Valgrind</li>
-                            <li>• Coordination Git et code reviews</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- RESULTATS -->
             <div class="row mb-3 pt-3">
@@ -377,8 +382,57 @@
                     </div>
                 </div>
             </div>
+<div class="row mb-3 pt-3">
+    <div class="col-12">
+        <h2 class="section-title mb-4">Stack Technologique</h2>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>C</h3>
+            <p>Langage principal utilisé pour implémenter un shell minimaliste respectant la norme POSIX.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>POSIX</h3>
+            <p>Gestion des processus, pipes, redirections, signaux et exécution de commandes via fork/execve.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Lexing & Parsing</h3>
+            <p>Construction d’un lexer et d’un parser pour analyser la ligne de commande, gérer les tokens et la grammaire.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Gestion Mémoire</h3>
+            <p>Allocation contrôlée, suivi des pointeurs, nettoyage complet et protection contre les leaks.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Makefile</h3>
+            <p>Compilation modulaire, gestion des dépendances, optimisation et automatisation des builds.</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="block__16443">
+            <h3>Debug & Analyse</h3>
+            <p>Utilisation de gdb, valgrind et tests manuels pour traquer segmentation faults et comportements indésirables.</p>
+        </div>
+    </div>
+</div>
+</section>
 
         </div>
+        
     </section>
 
     <!-- CTA -->
@@ -390,7 +444,7 @@
                     <p style="color: white; font-size: 1.1rem;">Consultez le code source sur GitHub.</p>
                 </div>
                 <div class="col-md-4 text-md-right">
-                    <a href="https://github.com/Zuuret" class="btn btn-outline-white btn-md" target="_blank">Voir sur GitHub</a>
+                    <a href="javascript:void(0)" class="btn btn-outline-white btn-md"style="color: white;">Code non disponible.</a>
                 </div>
             </div>
         </div>
@@ -412,6 +466,9 @@
                                 <li><a href="index.html">Accueil</a></li>
                                 <li><a href="about.html">Qui suis-je ?</a></li>
                                 <li><a href="skills.html">Compétences</a></li>
+                                <li><a href="projets.html">Projets</a></li>
+                                <li><a href="blog.html">Formation</a></li>
+                                <li><a href="contact-form.html">Contact</a></li>
                             </ul>
                         </div>
                         <div class="col-md-4">
